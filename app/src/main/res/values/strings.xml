@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GradeApp</string>
+    <string name="cst438_group_project">CST438 Group Project</string>
+    <string name="please_enter_name">Please enter name</string>
+    <string name="enter_password">enter password</string>
+    <string name="username">username</string>
 </resources>
