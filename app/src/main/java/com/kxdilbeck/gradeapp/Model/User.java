@@ -1,9 +1,9 @@
-package com.kxdilbeck.project1.Model;
+package com.kxdilbeck.gradeapp.Model;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.kxdilbeck.project1.Model.Database.AppDatabase;
+import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 
 //@TODO annotate
 

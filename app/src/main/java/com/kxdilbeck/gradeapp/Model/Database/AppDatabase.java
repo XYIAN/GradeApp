@@ -1,9 +1,9 @@
-package com.kxdilbeck.project1.Model.Database;
+package com.kxdilbeck.gradeapp.Model.Database;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
-import com.kxdilbeck.project1.Model.User;
+import com.kxdilbeck.gradeapp.Model.User;
 
 @Database(entities = {User.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
