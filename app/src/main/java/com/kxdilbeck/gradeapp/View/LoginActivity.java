@@ -1,7 +1,8 @@
-package com.kxdilbeck.project1.View;
+package com.kxdilbeck.gradeapp.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText mUsernameEditText;
     EditText mPasswordEditText;
     UserDAO mUserDAO;
+    public static final String CREDENTIALS = "CREDENTIALS";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,18 +40,28 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // verifies user login
-    private boolean verify(String username, String password){
+    private int verify(String username, String password){
+
         User user = mUserDAO.getAuthentication(username, password);
-        return password.equals(user.getPassword()) && username.equals(user.getUsername());
+
+        if(user == null){
+            return -1;
+        }
+
+        return password.equals(user.getPassword()) && username.equals(user.getUsername()) ? user.getUserId() : -1;
     }
     
     public void login(View v){
         String username = mUsernameEditText.getText().toString();
         String password = mPasswordEditText.getText().toString();
 
-        if(verify(username, password)){
+        int temp = verify(username, password);
+        if(temp > -1){
             //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             //startActivity(intent);
+
+            // saves the userID in shard preferences.
+            getApplication().getSharedPreferences(CREDENTIALS, MODE_PRIVATE).edit().putInt("USERID", temp).commit();
             Toast toast = Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG);
             toast.show();
         }else{
