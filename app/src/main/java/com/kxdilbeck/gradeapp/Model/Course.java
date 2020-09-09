@@ -17,6 +17,14 @@ public class Course {
     private String mStartDate;
     private String mEndDate;
 
+    public Course(String mInstructor, String mTitle, String mDescription, String mStartDate, String mEndDate) {
+        this.mInstructor = mInstructor;
+        this.mTitle = mTitle;
+        this.mDescription = mDescription;
+        this.mStartDate = mStartDate;
+        this.mEndDate = mEndDate;
+    }
+
     public int getCourseId() {
         return mCourseId;
     }
