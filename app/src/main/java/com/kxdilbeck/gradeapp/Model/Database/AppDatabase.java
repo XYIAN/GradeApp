@@ -22,5 +22,9 @@ public abstract class AppDatabase extends RoomDatabase {
     public static final String ENROLLMENT_TABLE = "Enrollment";
 
     public abstract UserDAO getUserDAO();
-
+    public abstract AssignmentDAO getAssignmentDAO();
+    public abstract CourseDAO getCourseDAO();
+    public abstract EnrollmentDAO getEnrollmentDAO();
+    public abstract GradeCategoryDAO getGradeCategoryDAO();
+    public abstract GradeDAO getGradeDAO();
 }
