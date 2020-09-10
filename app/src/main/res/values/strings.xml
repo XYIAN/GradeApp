@@ -9,5 +9,6 @@
     <string name="username_hint">username</string>
     <string name="password_hint">password</string>
     <string name="login">Login</string>
+    <string name="course_display">Course Display</string>
 
 </resources>
