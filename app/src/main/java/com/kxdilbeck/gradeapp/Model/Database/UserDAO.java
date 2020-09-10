@@ -8,11 +8,13 @@ import androidx.room.Update;
 
 import com.kxdilbeck.gradeapp.Model.User;
 
+import java.util.List;
+
 
 @Dao
 public interface UserDAO {
     @Insert
-    void insert(User... user);
+    List<Long> insert(User... user);
 
     @Update
     void update(User user);
@@ -22,4 +24,8 @@ public interface UserDAO {
 
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE mUsername = :username AND mPassword = :password")
     User getAuthentication(String username, String password);
+
+    @Query("SELECT * FROM " + AppDatabase.USER_TABLE)
+    List<User> getAllUsers();
+
 }

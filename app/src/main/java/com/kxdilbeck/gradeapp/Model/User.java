@@ -5,6 +5,8 @@ import androidx.room.PrimaryKey;
 
 import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 
+import java.util.Objects;
+
 //@TODO annotate
 
 @Entity(tableName = AppDatabase.USER_TABLE)
@@ -71,5 +73,35 @@ public class User {
 
     public void setAccessLevel(int mAccessLevel) {
         this.mAccessLevel = mAccessLevel;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return mUserId == user.mUserId &&
+                mAccessLevel == user.mAccessLevel &&
+                Objects.equals(mUsername, user.mUsername) &&
+                Objects.equals(mPassword, user.mPassword) &&
+                Objects.equals(mFirstName, user.mFirstName) &&
+                Objects.equals(mLastName, user.mLastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mUserId, mUsername, mPassword, mFirstName, mLastName, mAccessLevel);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "mUserId=" + mUserId +
+                ", mUsername='" + mUsername + '\'' +
+                ", mPassword='" + mPassword + '\'' +
+                ", mFirstName='" + mFirstName + '\'' +
+                ", mLastName='" + mLastName + '\'' +
+                ", mAccessLevel=" + mAccessLevel +
+                '}';
     }
 }

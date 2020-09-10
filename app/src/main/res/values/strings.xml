@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">GradeApp</string>
+    <string name="welcome">welcome</string>
     <string name="cst438_group_project">CST438 Group Project</string>
-    <string name="please_enter_name">Please enter name</string>
-    <string name="enter_password">enter password</string>
-    <string name="username">username</string>
     <string name="Title">TextView</string>
+
+    <!--login screen assets-->
+    <string name="please_enter_name">Please enter name</string>
+    <string name="username_hint">username</string>
+    <string name="password_hint">password</string>
+    <string name="login">Login</string>
+
 </resources>
