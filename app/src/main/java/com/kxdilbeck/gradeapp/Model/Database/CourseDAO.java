@@ -8,6 +8,8 @@ import androidx.room.Update;
 
 import com.kxdilbeck.gradeapp.Model.Course;
 
+import java.util.Dictionary;
+
 @Dao
 public interface CourseDAO {
     @Insert
@@ -18,4 +20,6 @@ public interface CourseDAO {
 
     @Delete
     void delete(Course course);
+
 }
+
