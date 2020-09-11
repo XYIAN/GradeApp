@@ -59,50 +59,13 @@ public class UserTableTest {
     }
 
     @Test
-    public void getUserId() {
+    public void update(){
+
     }
 
     @Test
-    public void setUserId() {
+    public void delete(){
+
     }
 
-    @Test
-    public void getUsername() {
-    }
-
-    @Test
-    public void setUsername() {
-    }
-
-    @Test
-    public void getPassword() {
-    }
-
-    @Test
-    public void setPassword() {
-    }
-
-    @Test
-    public void getFirstName() {
-    }
-
-    @Test
-    public void setFirstName() {
-    }
-
-    @Test
-    public void getLastName() {
-    }
-
-    @Test
-    public void setLastName() {
-    }
-
-    @Test
-    public void getAccessLevel() {
-    }
-
-    @Test
-    public void setAccessLevel() {
-    }
 }
