@@ -41,16 +41,8 @@ public class Assignment {
         return mCourseId;
     }
 
-    public void setCourseId(int mCourseId) {
-        this.mCourseId = mCourseId;
-    }
-
     public int getCategoryId() {
         return mCategoryId;
-    }
-
-    public void setCategoryId(int mCategoryId) {
-        this.mCategoryId = mCategoryId;
     }
 
     public String getDueDate() {
