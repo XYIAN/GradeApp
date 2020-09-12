@@ -1,5 +1,6 @@
 package com.kxdilbeck.gradeapp.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +15,9 @@ import com.kxdilbeck.gradeapp.Controller.LoginController;
 import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 import com.kxdilbeck.gradeapp.Model.Database.UserDAO;
 import com.kxdilbeck.gradeapp.Model.User;
+import com.kxdilbeck.gradeapp.Prepopulate;
 import com.kxdilbeck.gradeapp.R;
+import com.kxdilbeck.gradeapp.View.CreateAccountActivity;
 
 public class LoginActivity extends AppCompatActivity {
     EditText mUsernameEditText;
@@ -52,4 +55,13 @@ public class LoginActivity extends AppCompatActivity {
             toast.show();
         }
     }
+
+    public void createAccount(View v){
+        startActivity(CreateAccountActivity.getIntent(getApplicationContext()));
+    }
+
+    public static Intent getIntent(Context context){
+        return new Intent(context.getApplicationContext(), LoginActivity.class);
+    }
+
 }

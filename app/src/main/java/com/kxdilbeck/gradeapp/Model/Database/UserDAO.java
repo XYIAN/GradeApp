@@ -6,10 +6,10 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 import com.kxdilbeck.gradeapp.Model.User;
 
 import java.util.List;
-
 
 @Dao
 public interface UserDAO {
@@ -27,5 +27,8 @@ public interface UserDAO {
 
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE)
     List<User> getAllUsers();
+
+    @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " Where mUsername = :username")
+    User getUserByUsername(String username);
 
 }
