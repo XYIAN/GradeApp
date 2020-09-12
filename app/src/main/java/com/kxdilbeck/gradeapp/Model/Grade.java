@@ -15,12 +15,14 @@ public class Grade {
     private int mAssignmentId;
     private int mStudentId;
     private int mCourseId;
+    private int mGradeCategoryId;
 
-    public Grade(int mScore, int mAssignmentId, int mStudentId, int mCourseId) {
+    public Grade(int mScore, int mAssignmentId, int mStudentId, int mCourseId, int mGradeCategoryId) {
         this.mScore = mScore;
         this.mAssignmentId = mAssignmentId;
         this.mStudentId = mStudentId;
         this.mCourseId = mCourseId;
+        this.mGradeCategoryId = mGradeCategoryId;
     }
 
     public int getGradeId() {
@@ -61,6 +63,14 @@ public class Grade {
 
     public void setCourseId(int mCourseId) {
         this.mCourseId = mCourseId;
+    }
+
+    public int getGradeCategoryId() {
+        return mGradeCategoryId;
+    }
+
+    public void setGradeCategoryId(int mGradeCategoryId) {
+        this.mGradeCategoryId = mGradeCategoryId;
     }
 
     @Override
