@@ -33,16 +33,8 @@ public class Enrollment {
         return mStudentId;
     }
 
-    public void setStudentId(int mStudentId) {
-        this.mStudentId = mStudentId;
-    }
-
     public int getCourseId() {
         return mCourseId;
-    }
-
-    public void setCourseId(int mCourseId) {
-        this.mCourseId = mCourseId;
     }
 
     public String getEnrollDate() {
