@@ -1,3 +1,6 @@
+// THE COMMENT BELOW IS A TEST COMMIT
+// Configuation Package
+
 package com.kxdilbeck.gradeapp.Model;
 
 import org.junit.Test;
