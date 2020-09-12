@@ -60,11 +60,11 @@ public class AssignmentTest {
     }
 
     @Test
-    public void getCategoryId() {
-        assertEquals(4, assignments.get(0).getCategoryId());
-        assertEquals( assignments.get(0).getCategoryId(),  assignments.get(1).getCategoryId());
-        assertEquals( assignments.get(2).getCategoryId(),  assignments.get(3).getCategoryId());
-        assertEquals( 1,  assignments.get(4).getCategoryId());
+    public void getGradeId() {
+        assertEquals(4, assignments.get(0).getGradeId());
+        assertEquals( assignments.get(0).getGradeId(),  assignments.get(1).getGradeId());
+        assertEquals( assignments.get(2).getGradeId(),  assignments.get(3).getGradeId());
+        assertEquals( 1,  assignments.get(4).getGradeId());
     }
 
     @Test
