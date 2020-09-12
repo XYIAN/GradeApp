@@ -11,4 +11,14 @@
     <string name="login">Login</string>
     <string name="course_display">Course Display</string>
 
+    <!--activity_create_account-->
+    <string name="username_label">Username:</string>
+    <string name="password_label">Password:</string>
+    <string name="reenter_password_label">Reenter Password:</string>
+    <string name="create_account">Create</string>
+    <string name="first_name">First name:</string>
+    <string name="last_name">Last name:</string>
+    <string name="create_account_text">Create Account</string>
+    <string name="cancel">cancel</string>
+
 </resources>
