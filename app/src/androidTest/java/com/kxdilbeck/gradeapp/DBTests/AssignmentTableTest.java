@@ -1,72 +1,28 @@
+// THE COMMENT BELOW IS A TEST COMMIT
+// Configuation Package
+
 package com.kxdilbeck.gradeapp.Model;
 
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class AssignmentTableTest {
 
     @Test
-    public void getAssignmentId() {
+    public void insert(){
+
     }
 
     @Test
-    public void setAssignmentId() {
+    public void update(){
+
     }
 
     @Test
-    public void getCourseId() {
-    }
+    public void delete(){
 
-    @Test
-    public void setCourseId() {
-    }
-
-    @Test
-    public void getCategoryId() {
-    }
-
-    @Test
-    public void setCategoryId() {
-    }
-
-    @Test
-    public void getDueDate() {
-    }
-
-    @Test
-    public void setDueDate() {
-    }
-
-    @Test
-    public void getAssignedDate() {
-    }
-
-    @Test
-    public void setAssignedDate() {
-    }
-
-    @Test
-    public void getEarnedScore() {
-    }
-
-    @Test
-    public void setEarnedScore() {
-    }
-
-    @Test
-    public void getMaxScore() {
-    }
-
-    @Test
-    public void setMaxScore() {
-    }
-
-    @Test
-    public void getDetails() {
-    }
-
-    @Test
-    public void setDetails() {
     }
 }

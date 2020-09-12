@@ -17,6 +17,7 @@ import com.kxdilbeck.gradeapp.Model.Database.UserDAO;
 import com.kxdilbeck.gradeapp.Model.User;
 import com.kxdilbeck.gradeapp.Prepopulate;
 import com.kxdilbeck.gradeapp.R;
+import com.kxdilbeck.gradeapp.View.CreateAccountActivity;
 
 public class LoginActivity extends AppCompatActivity {
     EditText mUsernameEditText;

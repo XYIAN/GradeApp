@@ -12,16 +12,16 @@ public class Assignment {
     @PrimaryKey(autoGenerate = true)
     private int mAssignmentId;
     private int mCourseId;
-    private int mCategoryId;
+    private int mGradeId;
     private String mDueDate;
     private String mAssignedDate;
     private Double mEarnedScore;
     private Double mMaxScore;
     private String mDetails;
 
-    public Assignment(int mCourseId, int mCategoryId, String mDueDate, String mAssignedDate, Double mEarnedScore, Double mMaxScore, String mDetails) {
+    public Assignment(int mCourseId, int mGradeId, String mDueDate, String mAssignedDate, Double mEarnedScore, Double mMaxScore, String mDetails) {
         this.mCourseId = mCourseId;
-        this.mCategoryId = mCategoryId;
+        this.mGradeId = mGradeId;
         this.mDueDate = mDueDate;
         this.mAssignedDate = mAssignedDate;
         this.mEarnedScore = mEarnedScore;
@@ -41,16 +41,8 @@ public class Assignment {
         return mCourseId;
     }
 
-    public void setCourseId(int mCourseId) {
-        this.mCourseId = mCourseId;
-    }
-
-    public int getCategoryId() {
-        return mCategoryId;
-    }
-
-    public void setCategoryId(int mCategoryId) {
-        this.mCategoryId = mCategoryId;
+    public int getGradeId() {
+        return mGradeId;
     }
 
     public String getDueDate() {
@@ -100,7 +92,7 @@ public class Assignment {
         Assignment that = (Assignment) o;
         return mAssignmentId == that.mAssignmentId &&
                 mCourseId == that.mCourseId &&
-                mCategoryId == that.mCategoryId &&
+                mGradeId == that.mGradeId &&
                 Objects.equals(mDueDate, that.mDueDate) &&
                 Objects.equals(mAssignedDate, that.mAssignedDate) &&
                 Objects.equals(mEarnedScore, that.mEarnedScore) &&
@@ -110,6 +102,6 @@ public class Assignment {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mAssignmentId, mCourseId, mCategoryId, mDueDate, mAssignedDate, mEarnedScore, mMaxScore, mDetails);
+        return Objects.hash(mAssignmentId, mCourseId, mGradeId, mDueDate, mAssignedDate, mEarnedScore, mMaxScore, mDetails);
     }
 }

@@ -28,10 +28,14 @@ public class Prepopulate {
                 .allowMainThreadQueries()
                 .build().getCourseDAO();
 
-        if(courseDAO.getAllCourses().size() == 0){
-            courseDAO.insert(new Course("Dr. teacher", "BIO", "title here", "12/12/12", "12/13/12"));
-            courseDAO.insert(new Course("Dr. guy", "SCIENCE", "title here", "12/12/12", "12/13/12"));
-            courseDAO.insert(new Course("Dr. professor", "HISTORY", "title here", "12/12/12", "12/13/12"));
-        }
+        //if(courseDAO.getAllCourses().size() == 0){
+        courseDAO.insert(new Course("Dr. teacher", "BIO", "title here", "12/12/12", "12/13/12"));
+        courseDAO.insert(new Course("Dr. guy", "SCIENCE", "title here", "12/12/12", "12/13/12"));
+        courseDAO.insert(new Course("Dr. professor", "HISTORY", "title here", "12/12/12", "12/13/12"));
+        courseDAO.insert(new Course("Dr. pro", "ANATOMY", "title here", "12/12/15", "12/13/12"));
+        courseDAO.insert(new Course("Dr. it", "CS", "title here", "12/12/15", "12/13/12"));
+        courseDAO.insert(new Course("Dr. llama", "CS", "title here", "12/12/16", "12/13/12"));
+        courseDAO.insert(new Course("Dr. Evil", "BIO", "title here", "12/12/15", "12/13/12"));
+        //}
     }
 }
