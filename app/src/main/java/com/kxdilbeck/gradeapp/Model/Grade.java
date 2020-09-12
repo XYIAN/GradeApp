@@ -11,17 +11,15 @@ import java.util.Objects;
 public class Grade {
     @PrimaryKey(autoGenerate = true)
     private int mGradeId;
-    private int mScore;
+    private double mScore;
     private int mAssignmentId;
     private int mStudentId;
-    private int mCourseId;
     private int mGradeCategoryId;
 
-    public Grade(int mScore, int mAssignmentId, int mStudentId, int mCourseId, int mGradeCategoryId) {
+    public Grade(double mScore, int mAssignmentId, int mStudentId, int mGradeCategoryId) {
         this.mScore = mScore;
         this.mAssignmentId = mAssignmentId;
         this.mStudentId = mStudentId;
-        this.mCourseId = mCourseId;
         this.mGradeCategoryId = mGradeCategoryId;
     }
 
@@ -33,11 +31,11 @@ public class Grade {
         this.mGradeId = mGradeId;
     }
 
-    public int getScore() {
+    public double getScore() {
         return mScore;
     }
 
-    public void setScore(int mScore) {
+    public void setScore(double mScore) {
         this.mScore = mScore;
     }
 
@@ -57,14 +55,6 @@ public class Grade {
         this.mStudentId = mStudentId;
     }
 
-    public int getCourseId() {
-        return mCourseId;
-    }
-
-    public void setCourseId(int mCourseId) {
-        this.mCourseId = mCourseId;
-    }
-
     public int getGradeCategoryId() {
         return mGradeCategoryId;
     }
@@ -81,12 +71,11 @@ public class Grade {
         return mGradeId == grade.mGradeId &&
                 mScore == grade.mScore &&
                 mAssignmentId == grade.mAssignmentId &&
-                mStudentId == grade.mStudentId &&
-                mCourseId == grade.mCourseId;
+                mStudentId == grade.mStudentId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mGradeId, mScore, mAssignmentId, mStudentId, mCourseId);
+        return Objects.hash(mGradeId, mScore, mAssignmentId, mStudentId);
     }
 }
