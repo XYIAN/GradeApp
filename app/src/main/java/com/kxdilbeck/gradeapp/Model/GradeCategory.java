@@ -12,12 +12,10 @@ public class GradeCategory {
     @PrimaryKey(autoGenerate = true)
     private int mGradeCategoryId;
     private String mTitle;
-    private int mGradeId;
     private double mWeight;
 
-    public GradeCategory(String mTitle, int mGradeId, double mWeight) {
+    public GradeCategory(String mTitle, double mWeight) {
         this.mTitle = mTitle;
-        this.mGradeId = mGradeId;
         this.mWeight = mWeight;
     }
 
@@ -37,14 +35,6 @@ public class GradeCategory {
         this.mTitle = mTitle;
     }
 
-    public int getGradeId() {
-        return mGradeId;
-    }
-
-    public void setGradeId(int mGradeId) {
-        this.mGradeId = mGradeId;
-    }
-
     public double getWeight() {
         return mWeight;
     }
@@ -59,13 +49,12 @@ public class GradeCategory {
         if (o == null || getClass() != o.getClass()) return false;
         GradeCategory that = (GradeCategory) o;
         return mGradeCategoryId == that.mGradeCategoryId &&
-                mGradeId == that.mGradeId &&
                 Double.compare(that.mWeight, mWeight) == 0 &&
                 mTitle.equals(that.mTitle);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mGradeCategoryId, mTitle, mGradeId, mWeight);
+        return Objects.hash(mGradeCategoryId, mTitle, mWeight);
     }
 }
