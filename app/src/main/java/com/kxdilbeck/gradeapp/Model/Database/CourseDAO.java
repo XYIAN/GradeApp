@@ -9,6 +9,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.kxdilbeck.gradeapp.Model.Course;
+import com.kxdilbeck.gradeapp.Model.Enrollment;
 
 import java.util.Dictionary;
 import java.util.List;
@@ -29,5 +30,8 @@ public interface CourseDAO {
 
     @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE)
     List<Course> getAllCourses();
+
+    @Query("SELECT Course.* FROM " + AppDatabase.COURSE_TABLE + " NATURAL JOIN " + AppDatabase.ENROLLMENT_TABLE + " WHERE Enrollment.mStudentId = :studentId")
+    List<Course> getAllEnrolledCourses(int studentId);
 }
 
