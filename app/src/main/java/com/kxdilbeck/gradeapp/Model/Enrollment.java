@@ -1,13 +1,27 @@
 package com.kxdilbeck.gradeapp.Model;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 
 import java.util.Objects;
 
-@Entity(tableName = AppDatabase.ENROLLMENT_TABLE)
+@Entity(tableName = AppDatabase.ENROLLMENT_TABLE,
+        foreignKeys = {
+            @ForeignKey(entity = User.class, parentColumns = "mUserId",
+                    childColumns = "mStudentId", onDelete = ForeignKey.NO_ACTION),
+            @ForeignKey(entity = Course.class, parentColumns = "mCourseId",
+                    childColumns = "mCourseId", onDelete = ForeignKey.NO_ACTION)
+        },
+
+        indices = {
+            @Index(value = "mCourseId", unique = true),
+            @Index(value = "mStudentId", unique = true)
+        }
+)
 public class Enrollment {
     @PrimaryKey(autoGenerate = true)
     private int mEnrollmentId;
