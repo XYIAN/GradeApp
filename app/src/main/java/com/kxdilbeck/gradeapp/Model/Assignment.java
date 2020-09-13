@@ -12,7 +12,7 @@ import java.util.Objects;
 @Entity(tableName = AppDatabase.ASSIGNMENT_TABLE,
         foreignKeys = {
             @ForeignKey(entity = Course.class, parentColumns = "mCourseId",
-                    childColumns = "mCourseId", onDelete = ForeignKey.NO_ACTION),
+                    childColumns = "mCourseId", onDelete = ForeignKey.CASCADE),
             @ForeignKey(entity = Grade.class, parentColumns = "mGradeId",
                     childColumns = "mGradeId", onDelete = ForeignKey.CASCADE)
         },

@@ -12,9 +12,9 @@ import java.util.Objects;
 @Entity(tableName = AppDatabase.ENROLLMENT_TABLE,
         foreignKeys = {
             @ForeignKey(entity = User.class, parentColumns = "mUserId",
-                    childColumns = "mStudentId", onDelete = ForeignKey.NO_ACTION),
+                    childColumns = "mStudentId", onDelete = ForeignKey.CASCADE),
             @ForeignKey(entity = Course.class, parentColumns = "mCourseId",
-                    childColumns = "mCourseId", onDelete = ForeignKey.NO_ACTION)
+                    childColumns = "mCourseId", onDelete = ForeignKey.CASCADE)
         },
 
         indices = {

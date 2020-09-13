@@ -1,5 +1,6 @@
 package com.kxdilbeck.gradeapp.Model;
 
+import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
@@ -11,16 +12,13 @@ import java.util.Objects;
 
 @Entity(tableName = AppDatabase.GRADE_TABLE,
         foreignKeys = {
-            @ForeignKey(entity = Assignment.class, parentColumns = "mAssignmentId",
-                    childColumns = "mAssignmentId", onDelete = ForeignKey.NO_ACTION),
             @ForeignKey(entity = User.class, parentColumns = "mUserId",
-                    childColumns = "mStudentId", onDelete = ForeignKey.NO_ACTION),
+                    childColumns = "mStudentId", onDelete = ForeignKey.CASCADE),
             @ForeignKey(entity = GradeCategory.class, parentColumns = "mGradeCategoryId",
-                    childColumns = "mGradeCategoryId", onDelete = ForeignKey.NO_ACTION)
+                    childColumns = "mGradeCategoryId", onDelete = ForeignKey.SET_NULL)
         },
 
         indices = {
-            @Index(value = "mAssignmentId", unique = true),
             @Index(value = "mStudentId", unique = true),
             @Index(value = "mGradeCategoryId", unique = true),
         }
@@ -28,14 +26,14 @@ import java.util.Objects;
 public class Grade {
     @PrimaryKey(autoGenerate = true)
     private int mGradeId;
-    private double mScore;
-    private int mAssignmentId;
+    @Nullable
+    double mScore;
     private int mStudentId;
+    @Nullable
     private int mGradeCategoryId;
 
-    public Grade(double mScore, int mAssignmentId, int mStudentId, int mGradeCategoryId) {
+    public Grade(@Nullable double mScore, int mStudentId, @Nullable int mGradeCategoryId) {
         this.mScore = mScore;
-        this.mAssignmentId = mAssignmentId;
         this.mStudentId = mStudentId;
         this.mGradeCategoryId = mGradeCategoryId;
     }
@@ -54,14 +52,6 @@ public class Grade {
 
     public void setScore(double mScore) {
         this.mScore = mScore;
-    }
-
-    public int getAssignmentId() {
-        return mAssignmentId;
-    }
-
-    public void setAssignmentId(int mAssignmentId) {
-        this.mAssignmentId = mAssignmentId;
     }
 
     public int getStudentId() {
@@ -87,12 +77,11 @@ public class Grade {
         Grade grade = (Grade) o;
         return mGradeId == grade.mGradeId &&
                 mScore == grade.mScore &&
-                mAssignmentId == grade.mAssignmentId &&
                 mStudentId == grade.mStudentId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mGradeId, mScore, mAssignmentId, mStudentId);
+        return Objects.hash(mGradeId, mScore, mStudentId);
     }
 }
