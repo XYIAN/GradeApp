@@ -19,8 +19,8 @@ import java.util.Objects;
         },
 
         indices = {
-            @Index(value = "mStudentId", unique = true),
-            @Index(value = "mGradeCategoryId", unique = true),
+            @Index(value = "mStudentId"),
+            @Index(value = "mGradeCategoryId"),
         }
 )
 public class Grade {
