@@ -6,17 +6,21 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.kxdilbeck.gradeapp.Model.Grade;
 import com.kxdilbeck.gradeapp.Model.GradeCategory;
+
+import java.util.List;
 
 @Dao
 public interface GradeCategoryDAO {
     @Insert
-    void insert(GradeCategory ... gradeCategories);
+    List<Long> insert(GradeCategory ... gradeCategories);
 
     @Update
-    void insert(GradeCategory gradeCategory);
+    void update(GradeCategory gradeCategory);
 
     @Delete
     void delete(GradeCategory gradeCategory);
+
+    @Query("Select * From " + AppDatabase.GRADE_CATEGORY_TABLE)
+    List<GradeCategory> getAllCategories();
 }

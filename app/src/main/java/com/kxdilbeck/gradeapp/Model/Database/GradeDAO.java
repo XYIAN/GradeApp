@@ -8,14 +8,19 @@ import androidx.room.Update;
 
 import com.kxdilbeck.gradeapp.Model.Grade;
 
+import java.util.List;
+
 @Dao
 public interface GradeDAO {
     @Insert
-    void insert(Grade ... grades);
+    List<Long> insert(Grade ... grades);
 
     @Update
     void update(Grade grade);
 
     @Delete
     void delete(Grade grade);
+
+    @Query("Select * From " + AppDatabase.GRADE_TABLE)
+    List<Grade> getAllGrades();
 }
