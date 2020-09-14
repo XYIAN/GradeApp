@@ -24,7 +24,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class CourseTableTest {
+public class InterTableQueries {
     private AppDatabase db;
     private CourseDAO courseDAO;
     private UserDAO userDAO;
@@ -57,5 +57,23 @@ public class CourseTableTest {
 
     @Test
     public void delete() {
+    }
+
+    @Test
+    public void getAllEnrolledCourses(){
+        List<User> users = userDAO.getAllUsers();
+        List<Course> courses = courseDAO.getAllEnrolledCourses(users.get(0).getUserId());
+        List<Course> courses2 = courseDAO.getAllEnrolledCourses(users.get(1).getUserId());
+
+        //user 1
+        assertEquals(3, courses.size());
+        assertEquals(1, courses.get(0).getCourseId());
+        assertEquals(3, courses.get(1).getCourseId());
+        assertEquals(4, courses.get(2).getCourseId());
+
+        //user 2
+        assertEquals(2, courses2.size());
+        assertEquals(1, courses2.get(0).getCourseId());
+        assertEquals(3, courses2.get(1).getCourseId());
     }
 }
