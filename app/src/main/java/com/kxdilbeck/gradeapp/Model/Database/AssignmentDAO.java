@@ -24,6 +24,11 @@ public interface AssignmentDAO {
     @Query("Select * FROM " + AppDatabase.ASSIGNMENT_TABLE)
     List<Assignment> getAllAssignments();
 
+    @Query("SELECT Assignment.* FROM " + AppDatabase.ASSIGNMENT_TABLE + " NATURAL JOIN " +
+            AppDatabase.GRADE_TABLE + " WHERE mCourseId = :courseId AND mStudentId = :userId " +
+            " AND mGradeCategoryId = :gradeCategory")
+    List<Assignment> getAssignmentsByCategory(int courseId, int userId, int gradeCategory);
+
     @Query("SELECT SUM(Assignment.mEarnedScore) FROM " + AppDatabase.ASSIGNMENT_TABLE + " NATURAL JOIN " +
             AppDatabase.GRADE_TABLE + " WHERE mCourseId = :courseId AND mStudentId = :userId" +
             " GROUP BY Grade.mGradeCategoryId")

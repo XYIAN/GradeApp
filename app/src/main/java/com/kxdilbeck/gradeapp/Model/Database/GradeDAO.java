@@ -29,4 +29,8 @@ public interface GradeDAO {
             + " WHERE mCourseId = :courseId AND mStudentId = :userId" +
             " GROUP BY Grade.mGradeCategoryId")
     List<Double> getAllWeightsForCourse(int courseId, int userId);
+
+    @Query("SELECT mGradeCategoryId FROM " + AppDatabase.GRADE_TABLE + " NATURAL JOIN " +
+            AppDatabase.ASSIGNMENT_TABLE + " WHERE mCourseId = :courseId AND mStudentId = :userId ")
+    List<Integer> getGradeCategoriesForCourse(int courseId, int userId);
 }
