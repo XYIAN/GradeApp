@@ -8,14 +8,19 @@ import androidx.room.Update;
 
 import com.kxdilbeck.gradeapp.Model.Enrollment;
 
+import java.util.List;
+
 @Dao
 public interface EnrollmentDAO {
     @Insert
-    void insert(Enrollment ... enrollments);
+    List<Long> insert(Enrollment ... enrollments);
 
     @Update
     void update(Enrollment enrollment);
 
     @Delete
     void delete(Enrollment enrollment);
+
+    @Query("Select * From " + AppDatabase.ENROLLMENT_TABLE)
+    List<Enrollment> getAllEnrollments();
 }

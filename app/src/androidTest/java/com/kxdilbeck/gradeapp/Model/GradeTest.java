@@ -16,13 +16,13 @@ public class GradeTest {
     public void setUp() throws Exception {
         grades = new ArrayList<>();
 
-        grades.add(new Grade(25.0, 0, 0, 0));
+        grades.add(new Grade(25.0, 0, 0));
         grades.get(0).setGradeId(0);
-        grades.add(new Grade(55.0, 0, 1, 0));
+        grades.add(new Grade(55.0, 0, 1));
         grades.get(1).setGradeId(1);
-        grades.add(new Grade(33.0, 1, 0, 1));
+        grades.add(new Grade(33.0, 1, 0));
         grades.get(2).setGradeId(2);
-        grades.add(new Grade(22.0, 2, 2, 1));
+        grades.add(new Grade(22.0, 2, 2));
         grades.get(3).setGradeId(3);
     }
 
@@ -59,17 +59,6 @@ public class GradeTest {
         grades.get(0).setScore(20.0);
 
         assertEquals(20.0, grades.get(0).getScore(), 0.01);
-    }
-
-    @Test
-    public void getAssignmentId() {
-        assertEquals(0, grades.get(0).getAssignmentId());
-    }
-
-    @Test
-    public void setAssignmentId() {
-        grades.get(0).setAssignmentId(1);
-        assertEquals(1, grades.get(0).getAssignmentId());
     }
 
     @Test
