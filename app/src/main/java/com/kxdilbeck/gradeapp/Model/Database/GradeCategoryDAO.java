@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.kxdilbeck.gradeapp.Model.GradeCategory;
+import com.kxdilbeck.gradeapp.Model.*;
 
 import java.util.List;
 

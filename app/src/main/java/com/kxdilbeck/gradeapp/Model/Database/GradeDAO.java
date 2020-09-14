@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.kxdilbeck.gradeapp.Model.Grade;
+import com.kxdilbeck.gradeapp.Model.*;
 
 import java.util.List;
 
@@ -23,4 +23,10 @@ public interface GradeDAO {
 
     @Query("Select * From " + AppDatabase.GRADE_TABLE)
     List<Grade> getAllGrades();
+
+    @Query("SELECT mWeight FROM " + AppDatabase.GRADE_TABLE + " NATURAL JOIN " +
+            AppDatabase.GRADE_CATEGORY_TABLE + " NATURAL JOIN " + AppDatabase.ASSIGNMENT_TABLE
+            + " WHERE mCourseId = :courseId AND mStudentId = :userId" +
+            " GROUP BY Grade.mGradeCategoryId")
+    List<Double> getAllWeightsForCourse(int courseId, int userId);
 }

@@ -1,7 +1,5 @@
 package com.kxdilbeck.gradeapp.Model.Database;
 
-import android.content.Context;
-
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -9,9 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.kxdilbeck.gradeapp.Model.Course;
-import com.kxdilbeck.gradeapp.Model.Enrollment;
 
-import java.util.Dictionary;
 import java.util.List;
 
 @Dao
