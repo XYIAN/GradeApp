@@ -15,7 +15,7 @@ import java.util.Objects;
             @ForeignKey(entity = User.class, parentColumns = "mUserId",
                     childColumns = "mStudentId", onDelete = ForeignKey.CASCADE),
             @ForeignKey(entity = GradeCategory.class, parentColumns = "mGradeCategoryId",
-                    childColumns = "mGradeCategoryId", onDelete = ForeignKey.SET_NULL)
+                    childColumns = "mGradeCategoryId", onDelete = ForeignKey.CASCADE)
         },
 
         indices = {
