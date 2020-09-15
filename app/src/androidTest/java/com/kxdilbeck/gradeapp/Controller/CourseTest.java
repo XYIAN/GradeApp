@@ -40,6 +40,7 @@ public class CourseTest {
         //main test
         CourseTest courseTest = new CourseTest();
     }
+}
 
 
 
