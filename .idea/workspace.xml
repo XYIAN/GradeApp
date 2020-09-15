@@ -6,9 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a7c4477-6c8a-410c-90db-02521cf39bb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="0a7c4477-6c8a-410c-90db-02521cf39bb1" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +48,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1gxnMWcDH2bHI09nRlbmYY51WNi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -242,35 +239,7 @@
       <option name="project" value="LOCAL" />
       <updated>1599792944379</updated>
     </task>
-    <task id="LOCAL-00015" summary="CoursePage recycler update(unfinished)">
-      <created>1600207834941</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1600207834941</updated>
-    </task>
-    <task id="LOCAL-00016" summary="CoursePage test update(unfinished)">
-      <created>1600210141271</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1600210141271</updated>
-    </task>
-    <task id="LOCAL-00017" summary="CoursePage test update">
-      <created>1600210258037</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1600210258037</updated>
-    </task>
-    <task id="LOCAL-00018" summary="CoursePage test update">
-      <created>1600211220128</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1600211220128</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -302,8 +271,6 @@
     <MESSAGE value="fill" />
     <MESSAGE value="CoursePage" />
     <MESSAGE value="CoursePage recycler update(unfinished)" />
-    <MESSAGE value="CoursePage test update(unfinished)" />
-    <MESSAGE value="CoursePage test update" />
-    <option name="LAST_COMMIT_MESSAGE" value="CoursePage test update" />
+    <option name="LAST_COMMIT_MESSAGE" value="CoursePage recycler update(unfinished)" />
   </component>
 </project>
