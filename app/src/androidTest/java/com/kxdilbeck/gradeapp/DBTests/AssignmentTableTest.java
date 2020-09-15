@@ -98,6 +98,6 @@ public class AssignmentTableTest {
         assignmentDAO.delete(assignments.get(2));
 
         assertNotEquals(assignmentDAO.getAllAssignments().size(), assignments.size());
-        assertEquals(7, courseDAO.getAllCourses().size());
+        assertEquals(7, assignmentDAO.getAllAssignments().size());
     }
 }
