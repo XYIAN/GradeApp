@@ -6,16 +6,10 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a7c4477-6c8a-410c-90db-02521cf39bb1" name="Default Changelist" comment="CoursePage recycler update(unfinished)">
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+    <list default="true" id="0a7c4477-6c8a-410c-90db-02521cf39bb1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/kxdilbeck/gradeapp/Controller/CourseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kxdilbeck/gradeapp/CoursePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kxdilbeck/gradeapp/CoursePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/course_page_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/course_page_main.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -242,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599777503798</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="CoursePage recycler update(unfinished)">
+      <created>1599792944379</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1599792944379</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
