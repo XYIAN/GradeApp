@@ -55,6 +55,12 @@ public class CourseController {
         }
         return false;
     }
+    public boolean checkCourseTitle(String title){
+        if(currentCourse.getTitle() == title){
+            return true;
+        }
+        return false;
+    }
 
 
 

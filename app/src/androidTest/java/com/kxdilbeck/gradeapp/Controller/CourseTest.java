@@ -20,7 +20,8 @@ import static org.junit.Assert.*;
 public class CourseTest {
 
     //private UserDAO userDAO;
-    private Course course;
+    private Course currentCourse;
+    private CourseController createCourseController;
 
     @Before
     public void setUp() throws Exception {
@@ -28,19 +29,32 @@ public class CourseTest {
         //userDAO = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).allowMainThreadQueries().build().getUserDAO();
 
         //courseTest = new CourseTest();
+        createCourseController = new CourseController();
     }
 
     @After
     public void tearDown() throws Exception {
         //userDAO = null;
-        course = null;
+        currentCourse = null;
+        createCourseController = null;
     }
 
     @Test
     public void checkCourse() {
         //main test
-        CourseTest courseTest = new CourseTest();
-        assertTrue(course.courseTest());
+        Course courseTest = new Course("fill", "title fill", "desc fill", "00/00/00", "11/11/11");//set id ==
+        courseTest.setCourseId(0);
+        //check id
+        assertTrue(createCourseController.checkCourseID(0));
+        assertFalse(createCourseController.checkCourseID(1));
+        //check instructor
+        assertTrue(createCourseController.checkInstructor("fill"));
+        //check title
+        assertTrue(createCourseController.checkCourseTitle("title fill"));
+        //check start date
+        assertTrue(createCourseController.checkCourseStartDate("00/00/00"));
+        //check end date
+        assertTrue(createCourseController.checkCourseEndDate("11/11/11"));
     }
 
 }
