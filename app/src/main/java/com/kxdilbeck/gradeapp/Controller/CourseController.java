@@ -32,8 +32,10 @@ public class CourseController {
     public CourseController(){};
 
     public boolean checkCourseID(int id){
-        //if(id == )
-        return true;
+        if(currentCourse.getCourseId() == id) {
+            return true;
+        }
+        return false;
     }
     public boolean checkInstructor(String instructor){
         if(currentCourse.getInstructor() == instructor) {
@@ -41,9 +43,17 @@ public class CourseController {
         }
         return false;
     }
-    public boolean checkCourseStartDate(String date){
-        if(currentCourse.getStartDate() == date)
-        return true;
+    public boolean checkCourseStartDate(String sDate){
+        if(currentCourse.getStartDate() == sDate){
+            return true;
+        }
+        return false;
+    }
+    public boolean checkCourseEndDate(String eDate){
+        if(currentCourse.getStartDate() == eDate){
+            return true;
+        }
+        return false;
     }
 
 

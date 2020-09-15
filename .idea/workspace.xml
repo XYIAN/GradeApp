@@ -7,8 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a7c4477-6c8a-410c-90db-02521cf39bb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/kxdilbeck/gradeapp/Controller/CourseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/kxdilbeck/gradeapp/Controller/CourseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kxdilbeck/gradeapp/Controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kxdilbeck/gradeapp/Controller/CourseController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -251,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600207834941</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="CoursePage test update(unfinished)">
+      <created>1600210141271</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1600210141271</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -283,6 +288,7 @@
     <MESSAGE value="fill" />
     <MESSAGE value="CoursePage" />
     <MESSAGE value="CoursePage recycler update(unfinished)" />
-    <option name="LAST_COMMIT_MESSAGE" value="CoursePage recycler update(unfinished)" />
+    <MESSAGE value="CoursePage test update(unfinished)" />
+    <option name="LAST_COMMIT_MESSAGE" value="CoursePage test update(unfinished)" />
   </component>
 </project>
