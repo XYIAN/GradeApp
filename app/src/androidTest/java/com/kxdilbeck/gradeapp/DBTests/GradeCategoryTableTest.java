@@ -5,9 +5,15 @@ import android.content.Context;
 import androidx.room.Room;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.kxdilbeck.gradeapp.Model.Course;
 import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
+import com.kxdilbeck.gradeapp.Model.Database.CourseDAO;
+import com.kxdilbeck.gradeapp.Model.Database.EnrollmentDAO;
 import com.kxdilbeck.gradeapp.Model.Database.GradeCategoryDAO;
+import com.kxdilbeck.gradeapp.Model.Database.UserDAO;
+import com.kxdilbeck.gradeapp.Model.Enrollment;
 import com.kxdilbeck.gradeapp.Model.GradeCategory;
+import com.kxdilbeck.gradeapp.Model.User;
 import com.kxdilbeck.gradeapp.Prepopulate;
 
 import org.junit.After;
@@ -16,9 +22,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class GradeCategoryTableTest {
     private AppDatabase db;

@@ -88,5 +88,4 @@ public class CourseTableTest {
         assertNotEquals(courseDAO.getAllCourses().size(), courses.size());
         assertEquals(4, courseDAO.getAllCourses().size());
     }
-
 }
