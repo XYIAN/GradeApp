@@ -5,6 +5,7 @@ import android.util.Log;
 
 import androidx.room.Room;
 
+import com.kxdilbeck.gradeapp.Model.Assignment;
 import com.kxdilbeck.gradeapp.Model.Database.*;
 
 import java.util.List;
@@ -36,13 +37,11 @@ public class GradeController {
     }
 
     public String[] getCourseGrade(int userId, int courseId){
-        List<Double> earnedPointsByCategory = mAssignmentDAO.getSumOfEarnedPointsByCourse(userId, courseId);
-        List<Double> maxPointsByCategory = mAssignmentDAO.getSumOfMaxPointsByCourse(userId, courseId);
+        List<Double> earnedPointsByCategory = mAssignmentDAO.getSumOfEarnedPointsByCourse(courseId, userId);
+        List<Double> maxPointsByCategory = mAssignmentDAO.getSumOfMaxPointsByCourse(courseId, userId);
         List<Double> weightsByCategory = mGradeDAO.getAllWeightsForCourse(courseId, userId);
         Double grade = 0.0;
         Double weightsTotal = 0.0;
-
-        Log.i("DOESITWORK", earnedPointsByCategory + "");
 
         for(int i = 0; i < earnedPointsByCategory.size(); i ++){
             grade+= earnedPointsByCategory.get(i) / maxPointsByCategory.get(i) * weightsByCategory.get(i);
@@ -50,10 +49,13 @@ public class GradeController {
         }
 
         // Converts grade to a percent, and takes account for the possibility of the weights not adding to 1.
-        grade = grade/weightsTotal * 100;
+        if(weightsTotal != 0) {
+            grade = grade / weightsTotal * 100;
+        }else{
+            grade = Double.NaN;
+        }
 
         String[] resultant = {getLetterGrade(grade) + "", !grade.isNaN() ? grade + "": " "};
-
         return resultant;
     }
 
@@ -73,20 +75,43 @@ public class GradeController {
         return ' ';
     }
 
-    public void getCourseGradeCategories(int courseId, int userId){
-
+    public List<Integer> getCourseGradeCategories(int courseId, int userId){
+        return mGradeDAO.getGradeCategoriesForCourse(courseId, userId);
     }
 
-    public void getGradeByCategory(int courseId, int userId, int categoryId){
+    public String[] getGradeByCategory(int courseId, int userId, int categoryId){
+        List<Assignment> assignments = mAssignmentDAO.getAssignmentsByCategory(courseId, userId, categoryId);
+        Double grade = 0.0;
 
+        for(int i = 0; i < assignments.size(); i++){
+            grade+= assignments.get(i).getEarnedScore() / assignments.get(i).getMaxScore();
+        }
+
+        if(assignments.size() == 0){
+            grade = Double.NaN;
+        }else{
+            grade = grade/assignments.size() * 100;
+        }
+
+        String[] resultant = {getLetterGrade(grade) + "", !grade.isNaN() ? grade + "": " "};
+        return resultant;
     }
 
-    public void getAssignmentGrade(int earnedScore, int maxScore){
+    public String[] getAssignmentGrade(Assignment assignment){
+        Double grade = 0.0;
 
+        if(assignment.getMaxScore() !=null && assignment.getMaxScore() != 0 ){
+            grade = assignment.getEarnedScore() / assignment.getMaxScore() * 100;
+        }else{
+            grade = Double.NaN;
+        }
+
+        String[] resultant = {getLetterGrade(grade) + "", !grade.isNaN() ? grade + "": " "};
+        return resultant;
     }
 
-    public void getAssignmentByCategory(int courseId, int userId, int categoryId){
-
+    public List<Assignment> getAssignmentsByCategory(int courseId, int userId, int categoryId){
+        return mAssignmentDAO.getAssignmentsByCategory(courseId, userId, categoryId);
     }
 
 }
