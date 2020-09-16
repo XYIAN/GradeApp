@@ -7,6 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a7c4477-6c8a-410c-90db-02521cf39bb1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/kxdilbeck/gradeapp/Controller/CourseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/kxdilbeck/gradeapp/Controller/CourseTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,6 +51,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1gxnMWcDH2bHI09nRlbmYY51WNi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -59,6 +61,11 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="Push.Settings">
+    <force-push-targets>
+      <force-push-target remote-path="origin" branch="Course_b" />
+    </force-push-targets>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -241,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599792944379</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="CoursePage testerr">
+      <created>1600211985210</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1600211985210</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -273,6 +287,7 @@
     <MESSAGE value="fill" />
     <MESSAGE value="CoursePage" />
     <MESSAGE value="CoursePage recycler update(unfinished)" />
-    <option name="LAST_COMMIT_MESSAGE" value="CoursePage recycler update(unfinished)" />
+    <MESSAGE value="CoursePage testerr" />
+    <option name="LAST_COMMIT_MESSAGE" value="CoursePage testerr" />
   </component>
 </project>
