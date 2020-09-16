@@ -79,4 +79,5 @@ public class GradeCategoryTableTest {
         assertNotEquals(gradeCategoryDAO.getAllCategories().size(), gradeCategories.size());
         assertEquals(sizeBefore - 2, gradeCategoryDAO.getAllCategories().size());
     }
+
 }

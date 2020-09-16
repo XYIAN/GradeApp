@@ -85,4 +85,5 @@ public class GradeTableTest {
         assertNotEquals(gradeDAO.getAllGrades().size(), grades.size());
         assertEquals(sizeBefore - 2, gradeDAO.getAllGrades().size());
     }
+
 }

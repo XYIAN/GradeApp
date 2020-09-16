@@ -91,4 +91,5 @@ public class EnrollmentTableTest {
         assertNotEquals(enrollmentDAO.getAllEnrollments().size(), enrollments.size());
         assertEquals(8, enrollmentDAO.getAllEnrollments().size());
     }
+
 }
