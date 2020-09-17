@@ -21,6 +21,9 @@ import com.kxdilbeck.gradeapp.Model.User;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Prepopulate inserts default values into the database.
+ */
 public class Prepopulate {
     private CourseDAO mCourseDao;
     private static List<Integer> userIds;
@@ -29,6 +32,10 @@ public class Prepopulate {
     private static List<Integer> assignmentIds;
     private static List<Integer> gradeCategoryIds;
 
+    /**
+     * Constructor for Prepopulate.
+     * @param context
+     */
     public Prepopulate(Context context){
 
         mCourseDao = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DBNAME)
@@ -36,6 +43,10 @@ public class Prepopulate {
                 .build().getCourseDAO();
     }
 
+    /**
+     * Given a db it inserts prepopulated values into it.
+     * @param appDatabase
+     */
     public static void prepopulate(AppDatabase appDatabase){
            userIds = new ArrayList<>();
            courseIds = new ArrayList<>();
@@ -57,6 +68,10 @@ public class Prepopulate {
            assignmentIds = null;
     }
 
+    /**
+     * Inserts prepopulated courses.
+     * @param appDatabase
+     */
     private static void addCourses(AppDatabase appDatabase){
         CourseDAO courseDAO;
 
@@ -73,6 +88,10 @@ public class Prepopulate {
         }
     }
 
+    /**
+     * Inserts prepopulate users.
+     * @param appDatabase
+     */
     private static void addUsers(AppDatabase appDatabase){
         UserDAO userDAO = appDatabase.getUserDAO();
 
@@ -85,6 +104,10 @@ public class Prepopulate {
         }
     }
 
+    /**
+     * Inserts prepopulated enrollments.
+     * @param appDatabase
+     */
     private static void addEnrollments(AppDatabase appDatabase){
         EnrollmentDAO enrollmentDAO = appDatabase.getEnrollmentDAO();
 
@@ -103,6 +126,10 @@ public class Prepopulate {
         }
     }
 
+    /**
+     * Inserts prepopulated grade categories.
+     * @param appDatabase
+     */
     private static void addGradeCategories(AppDatabase appDatabase){
         GradeCategoryDAO gradeCategoryDAO = appDatabase.getGradeCategoryDAO();
 
@@ -115,6 +142,10 @@ public class Prepopulate {
         }
     }
 
+    /**
+     * Inserts prepopulated grades.
+     * @param appDatabase
+     */
     private static void addGrades(AppDatabase appDatabase){
         GradeDAO gradeDAO = appDatabase.getGradeDAO();
 
@@ -133,6 +164,10 @@ public class Prepopulate {
 
     }
 
+    /**
+     * Inserts prepopulated assignments.
+     * @param appDatabase
+     */
     private static void addAssignments(AppDatabase appDatabase){
         AssignmentDAO assignmentDAO = appDatabase.getAssignmentDAO();
 

@@ -19,12 +19,20 @@ import com.kxdilbeck.gradeapp.Prepopulate;
 import com.kxdilbeck.gradeapp.R;
 import com.kxdilbeck.gradeapp.View.CreateAccountActivity;
 
+/**
+ * LoginActivity is the login view. It provides a gui for the user to
+ * enter there credentials and login to.
+ */
 public class LoginActivity extends AppCompatActivity {
     EditText mUsernameEditText;
     EditText mPasswordEditText;
     public static final String CREDENTIALS = "CREDENTIALS";
     private LoginController loginController;
 
+    /**
+     * Creates the login view
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -33,7 +41,12 @@ public class LoginActivity extends AppCompatActivity {
         mUsernameEditText = findViewById(R.id.user);
         mPasswordEditText = findViewById(R.id.password);
     }
-    
+
+    /**
+     * When the login button is clicked this method checks whether there credentials are valid.
+     * It will mark incorrect fields with an error symbol.
+     * @param v
+     */
     public void login(View v){
         String username = mUsernameEditText.getText().toString();
         String password = mPasswordEditText.getText().toString();
@@ -56,10 +69,19 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * When the create button is clicked it switches to the CreateAccountActivity
+     * @param v
+     */
     public void createAccount(View v){
         startActivity(CreateAccountActivity.getIntent(getApplicationContext()));
     }
 
+    /**
+     * Makes an intent to for the LoginActivity
+     * @param context
+     * @return Intent
+     */
     public static Intent getIntent(Context context){
         return new Intent(context.getApplicationContext(), LoginActivity.class);
     }

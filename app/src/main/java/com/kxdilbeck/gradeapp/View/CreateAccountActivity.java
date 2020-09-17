@@ -13,6 +13,10 @@ import com.kxdilbeck.gradeapp.Controller.CreateAccountController;
 import com.kxdilbeck.gradeapp.Model.User;
 import com.kxdilbeck.gradeapp.R;
 
+/**
+ * CreateAccountActivity is the view for creating an account. It provides a gui
+ * for entering new account credentials, and making the account.
+ */
 public class CreateAccountActivity extends AppCompatActivity {
     private EditText mUsernameEditText;
     private EditText mPasswordEditText;
@@ -20,6 +24,10 @@ public class CreateAccountActivity extends AppCompatActivity {
     private EditText mLastNameEditText;
     private CreateAccountController createAccountController;
 
+    /**
+     * Creates the view for CreateAccountActivity
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
@@ -31,10 +39,21 @@ public class CreateAccountActivity extends AppCompatActivity {
         createAccountController = new CreateAccountController(getApplicationContext());
     }
 
+    /**
+     * Makes an intent for CreateAccountActivity
+     * @param context
+     * @return Intent
+     */
     public static Intent getIntent(Context context){
         return new Intent(context.getApplicationContext(), CreateAccountActivity.class);
     }
 
+    /**
+     * Verifies that the account credentials entered into the editTexts are valid.  If so
+     * it creates the new account, and returns to the login screen. If not it marks invalid
+     * fields as incorrect.
+     * @param v
+     */
     public void create(View v){
         String username = mUsernameEditText.getText().toString();
         String password = mPasswordEditText.getText().toString();
@@ -68,6 +87,10 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Provides a way back to login if going the the CreateAccountActivity was not wanted.
+     * @param v
+     */
     public void cancel(View v){
         startActivity(LoginActivity.getIntent(getApplicationContext()));
     }
