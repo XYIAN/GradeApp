@@ -12,6 +12,8 @@ import com.kxdilbeck.gradeapp.Model.Database.CourseDAO;
 import com.kxdilbeck.gradeapp.Model.Database.UserDAO;
 import com.kxdilbeck.gradeapp.Model.User;
 
+import java.util.List;
+
 public class CourseController {
     private CourseDAO mcourseDAO;
     private Course currentCourse;
@@ -59,6 +61,9 @@ public class CourseController {
         return false;
     }
 
+    public List<Course> getAllCourses(int userId){
+        return mcourseDAO.getAllEnrolledCourses(userId);
+    }
 
 
 
