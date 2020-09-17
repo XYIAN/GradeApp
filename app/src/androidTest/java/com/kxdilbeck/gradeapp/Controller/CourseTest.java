@@ -10,6 +10,7 @@ import com.kxdilbeck.gradeapp.Model.Course;
 import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 import com.kxdilbeck.gradeapp.Model.Database.UserDAO;
 import com.kxdilbeck.gradeapp.Model.User;
+import com.kxdilbeck.gradeapp.Prepopulate;
 
 import org.junit.After;
 import org.junit.Before;
@@ -28,9 +29,11 @@ public class CourseTest {
     public void setUp() throws Exception {
         Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         //userDAO = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).allowMainThreadQueries().build().getUserDAO();
+        AppDatabase db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).allowMainThreadQueries().build();
+        Prepopulate.prepopulate(db);
 
         //courseTest = new CourseTest();
-        createCourseController = new CourseController();
+        createCourseController = new CourseController(db);
     }
 
     @After

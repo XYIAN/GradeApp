@@ -13,23 +13,20 @@ import com.kxdilbeck.gradeapp.Model.Database.UserDAO;
 import com.kxdilbeck.gradeapp.Model.User;
 
 public class CourseController {
-    private UserDAO mUserDAO;
+    private CourseDAO mcourseDAO;
     private Course currentCourse;
 
     public CourseController(Context context){
-        mUserDAO = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DBNAME).allowMainThreadQueries().build().getUserDAO();
+        mcourseDAO = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DBNAME).allowMainThreadQueries().build().getCourseDAO();
         //creates user in db if there is not one.  @TODO create separate class for pre population of data
-        if(!context.getDatabasePath(AppDatabase.DBNAME).exists()){
-            CourseDAO courseDAO;
 
-            courseDAO = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DBNAME)
-                    .allowMainThreadQueries()
-                    .build().getCourseDAO();
-
-        }
     }//end course controller
 
-    public CourseController(){};
+    public CourseController(AppDatabase db){
+        mcourseDAO = db.getCourseDAO();
+
+    };
+
 
     public boolean checkCourseID(int id){
         if(currentCourse.getCourseId() == id) {

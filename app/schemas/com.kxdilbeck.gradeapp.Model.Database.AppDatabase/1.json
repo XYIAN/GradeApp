@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "7f764b6f3a86356f5350eabc05b92ba1",
+    "identityHash": "c46b6c7adddb87801539b3c5ce0d258a",
     "entities": [
       {
         "tableName": "User",
@@ -56,7 +56,7 @@
       },
       {
         "tableName": "Assignment",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mAssignmentId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mCourseId` INTEGER NOT NULL, `mCategoryId` INTEGER NOT NULL, `mDueDate` TEXT, `mAssignedDate` TEXT, `mEarnedScore` REAL, `mMaxScore` REAL, `mDetails` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mAssignmentId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mCourseId` INTEGER NOT NULL, `mGradeId` INTEGER NOT NULL, `mDueDate` TEXT, `mAssignedDate` TEXT, `mEarnedScore` REAL, `mMaxScore` REAL, `mDetails` TEXT, FOREIGN KEY(`mCourseId`) REFERENCES `Course`(`mCourseId`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`mGradeId`) REFERENCES `Grade`(`mGradeId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "mAssignmentId",
@@ -71,8 +71,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "mCategoryId",
-            "columnName": "mCategoryId",
+            "fieldPath": "mGradeId",
+            "columnName": "mGradeId",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -113,8 +113,48 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
-        "foreignKeys": []
+        "indices": [
+          {
+            "name": "index_Assignment_mCourseId",
+            "unique": false,
+            "columnNames": [
+              "mCourseId"
+            ],
+            "createSql": "CREATE  INDEX `index_Assignment_mCourseId` ON `${TABLE_NAME}` (`mCourseId`)"
+          },
+          {
+            "name": "index_Assignment_mGradeId",
+            "unique": false,
+            "columnNames": [
+              "mGradeId"
+            ],
+            "createSql": "CREATE  INDEX `index_Assignment_mGradeId` ON `${TABLE_NAME}` (`mGradeId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Course",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "mCourseId"
+            ],
+            "referencedColumns": [
+              "mCourseId"
+            ]
+          },
+          {
+            "table": "Grade",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "mGradeId"
+            ],
+            "referencedColumns": [
+              "mGradeId"
+            ]
+          }
+        ]
       },
       {
         "tableName": "Course",
@@ -168,43 +208,11 @@
       },
       {
         "tableName": "Enrollment",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mEnrollmentId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mEnrollmentId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mStudentId` INTEGER NOT NULL, `mCourseId` INTEGER NOT NULL, `mEnrollDate` TEXT, FOREIGN KEY(`mStudentId`) REFERENCES `User`(`mUserId`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`mCourseId`) REFERENCES `Course`(`mCourseId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "mEnrollmentId",
             "columnName": "mEnrollmentId",
-            "affinity": "INTEGER",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "mEnrollmentId"
-          ],
-          "autoGenerate": true
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
-      {
-        "tableName": "Grade",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mGradeId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mScore` INTEGER NOT NULL, `mAssignmentId` INTEGER NOT NULL, `mStudentId` INTEGER NOT NULL, `mCourseId` INTEGER NOT NULL)",
-        "fields": [
-          {
-            "fieldPath": "mGradeId",
-            "columnName": "mGradeId",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "mScore",
-            "columnName": "mScore",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "mAssignmentId",
-            "columnName": "mAssignmentId",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -219,6 +227,90 @@
             "columnName": "mCourseId",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "mEnrollDate",
+            "columnName": "mEnrollDate",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "mEnrollmentId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Enrollment_mCourseId",
+            "unique": false,
+            "columnNames": [
+              "mCourseId"
+            ],
+            "createSql": "CREATE  INDEX `index_Enrollment_mCourseId` ON `${TABLE_NAME}` (`mCourseId`)"
+          },
+          {
+            "name": "index_Enrollment_mStudentId",
+            "unique": false,
+            "columnNames": [
+              "mStudentId"
+            ],
+            "createSql": "CREATE  INDEX `index_Enrollment_mStudentId` ON `${TABLE_NAME}` (`mStudentId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "User",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "mStudentId"
+            ],
+            "referencedColumns": [
+              "mUserId"
+            ]
+          },
+          {
+            "table": "Course",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "mCourseId"
+            ],
+            "referencedColumns": [
+              "mCourseId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Grade",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mGradeId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mScore` REAL NOT NULL, `mStudentId` INTEGER NOT NULL, `mGradeCategoryId` INTEGER NOT NULL, FOREIGN KEY(`mStudentId`) REFERENCES `User`(`mUserId`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`mGradeCategoryId`) REFERENCES `Grade_Category`(`mGradeCategoryId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "mGradeId",
+            "columnName": "mGradeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mScore",
+            "columnName": "mScore",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mStudentId",
+            "columnName": "mStudentId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mGradeCategoryId",
+            "columnName": "mGradeCategoryId",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -227,12 +319,52 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
-        "foreignKeys": []
+        "indices": [
+          {
+            "name": "index_Grade_mStudentId",
+            "unique": false,
+            "columnNames": [
+              "mStudentId"
+            ],
+            "createSql": "CREATE  INDEX `index_Grade_mStudentId` ON `${TABLE_NAME}` (`mStudentId`)"
+          },
+          {
+            "name": "index_Grade_mGradeCategoryId",
+            "unique": false,
+            "columnNames": [
+              "mGradeCategoryId"
+            ],
+            "createSql": "CREATE  INDEX `index_Grade_mGradeCategoryId` ON `${TABLE_NAME}` (`mGradeCategoryId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "User",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "mStudentId"
+            ],
+            "referencedColumns": [
+              "mUserId"
+            ]
+          },
+          {
+            "table": "Grade_Category",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "mGradeCategoryId"
+            ],
+            "referencedColumns": [
+              "mGradeCategoryId"
+            ]
+          }
+        ]
       },
       {
         "tableName": "Grade_Category",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mGradeCategoryId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mTitle` TEXT, `mGradeId` INTEGER NOT NULL, `mWeight` REAL NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mGradeCategoryId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mTitle` TEXT, `mWeight` REAL NOT NULL)",
         "fields": [
           {
             "fieldPath": "mGradeCategoryId",
@@ -245,12 +377,6 @@
             "columnName": "mTitle",
             "affinity": "TEXT",
             "notNull": false
-          },
-          {
-            "fieldPath": "mGradeId",
-            "columnName": "mGradeId",
-            "affinity": "INTEGER",
-            "notNull": true
           },
           {
             "fieldPath": "mWeight",
@@ -271,7 +397,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"7f764b6f3a86356f5350eabc05b92ba1\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c46b6c7adddb87801539b3c5ce0d258a\")"
     ]
   }
 }

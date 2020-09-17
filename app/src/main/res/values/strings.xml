@@ -20,5 +20,6 @@
     <string name="last_name">Last name:</string>
     <string name="create_account_text">Create Account</string>
     <string name="cancel">cancel</string>
+    <string name="recyclerButton">Button</string>
 
 </resources>
