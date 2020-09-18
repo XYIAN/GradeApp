@@ -38,5 +38,7 @@
 
     <string name="add_course_button">Add Course</string>
     <string name="logout">Logout</string>
+    <string name="delete_assignment_label">Delete</string>
+    <string name="credentials_requirements">Username and password must contain at least 1 lower case, uppercase, and number character and be at least 7 characters long.</string>
 
 </resources>
