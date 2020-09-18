@@ -16,6 +16,10 @@ import com.kxdilbeck.gradeapp.Controller.AssignmentController;
 import com.kxdilbeck.gradeapp.Controller.GradeController;
 import com.kxdilbeck.gradeapp.R;
 
+/**
+ * View for creating an assignment. It provides a gui that allows users to enter information
+ * for creating an assignment.
+ */
 public class CreateAssignmentActivity extends AppCompatActivity {
     private EditText mScoreEditText;
     private EditText mMaxScoreEditText;
@@ -71,10 +75,19 @@ public class CreateAssignmentActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Returns intent for this activity so another app can switch to it
+     * @param context
+     * @return Intent
+     */
     public static Intent getIntent(Context context){
         return new Intent(context.getApplicationContext(), CreateAssignmentActivity.class);
     }
 
+    /**
+     * Adds an assignment to the db if it has valid fields.
+     * @param v
+     */
     public void createAssignment(View v){
         String score = mScoreEditText.getText().toString();
         String maxScore  = mMaxScoreEditText.getText().toString();
@@ -90,7 +103,7 @@ public class CreateAssignmentActivity extends AppCompatActivity {
             mMaxScoreEditText.setError("Invalid maxScore");
         }
 
-        if(!mAssignmentController.checkScore(score, maxScore)){
+        if(!mAssignmentController.checkScore(score)){
             mScoreEditText.setError("Invalid Score");
             valid = false;
         }
@@ -126,6 +139,10 @@ public class CreateAssignmentActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Returns back to the assignment dashboard.
+     * @param v
+     */
     public void cancel(View v){
         Intent intent = AssignmentDashboardActivity.getIntent(getApplicationContext());
         intent.putExtra("COURSEID", courseId);
