@@ -3,6 +3,7 @@ package com.kxdilbeck.gradeapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -35,21 +36,25 @@ public class CoursePage extends AppCompatActivity {
         CourseController cController = new CourseController(getApplicationContext());
         List<Course> cList = cController.getAllCourses(uId);
         GradeController gradeController = new GradeController(getApplicationContext());
-        RecyclerView recyclerView;
+        RecyclerView recyclerView = findViewById(R.id.courseRecycler);
         List<String[]> mGrades = new ArrayList<>();
         for(int i = 0 ; i < cList.size(); i++){
             mGrades.add(gradeController.getCourseGrade(uId, cList.get(i).getCourseId()));
         }
-        RecyclerView.LayoutManager rLayoutManager;
+        RecyclerView.LayoutManager rLayoutManager = new LinearLayoutManager(this);
         RecyclerView.Adapter adapter= new CourseAdapt(cList, mGrades, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(rLayoutManager);
+
     }
 
     public static Intent getIntent(Context context){
+
         return new Intent(context, CoursePage.class);
     }
 
