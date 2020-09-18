@@ -19,6 +19,8 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".View.CreateAccountActivity"></activity>
         <activity android:name=".CoursePage"></activity>
+        <activity android:name=".View.AssignmentDashboardActivity"></activity>
+        <activity android:name=".View.CreateAssignmentActivity"></activity>
     </application>
 
 </manifest>
