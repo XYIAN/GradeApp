@@ -82,15 +82,26 @@ public class CreateCourse extends AppCompatActivity {
     }
 
     public void edit(View v){
-
+        if(!mCourseName.equals("") && !mInstructor.equals("") && !sDate.equals("") && !eDate.equals("")){
+            Course c = courseDAO.getCourse(courseId);
+            c.setTitle(mCourseName.getText().toString());
+            c.setInstructor(mInstructor.getText().toString());
+            c.setStartDate(sDate.getText().toString());
+            c.setEndDate(eDate.getText().toString());
+            courseDAO.update(c);
+            startActivity(CoursePage.getIntent(getApplicationContext()));
+        }
     }
 
     public void delete(View v){
+        Course c = courseDAO.getCourse(courseId);
+        courseDAO.delete(c);
+        startActivity(CoursePage.getIntent(getApplicationContext()));
 
     }
 
     public void cancel(View v){
-        startActivity(CoursePage.getIntent(getApplicationContext()));//change to login
+        startActivity(CoursePage.getIntent(getApplicationContext()));//change to course pageS
     }
 
     public static Intent getIntent(Context context){

@@ -28,7 +28,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.403" />
+        app:layout_constraintVertical_bias="0.403"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/weightEditText"
@@ -55,7 +56,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.173" />
+        app:layout_constraintVertical_bias="0.173"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/assignedDateEditText"

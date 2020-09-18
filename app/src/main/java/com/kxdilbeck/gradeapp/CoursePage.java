@@ -74,6 +74,7 @@ public class CoursePage extends AppCompatActivity {
         startActivity(LoginActivity.getIntent(getApplicationContext()));//change to login
     }
 
+
     public static Intent getIntent(Context context){
 
         return new Intent(context, CoursePage.class);
