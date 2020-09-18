@@ -3,8 +3,11 @@ package com.kxdilbeck.gradeapp.View;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,9 +29,13 @@ public class CreateCourse extends AppCompatActivity {
     private EditText mInstructor ;
     private EditText sDate;
     private EditText eDate;
+    private Button deleteCourse;
+    private TextView textView;
     private CourseDAO courseDAO;
     private EnrollmentDAO eDAO;
     private int uId;
+    private int courseId;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.createcourse);
@@ -40,7 +47,22 @@ public class CreateCourse extends AppCompatActivity {
         mInstructor = findViewById(R.id.courseInstructor);
         sDate = findViewById(R.id.courseStartDate);
         eDate = findViewById(R.id.courseEndD);
+        deleteCourse = findViewById(R.id.deleteCourse);
+        textView = findViewById(R.id.courseTitle);
 
+        int mode = getIntent().getIntExtra("EDITMODE", -1);
+
+        if(mode == 1){
+            courseId = getIntent().getIntExtra("COURSEID", -1);
+            Course course = courseDAO.getCourse(courseId);
+
+            deleteCourse.setVisibility(View.VISIBLE);
+            textView.setText(course.getTitle());
+            mCourseName.setText(course.getTitle());
+            mInstructor.setText(course.getInstructor());
+            sDate.setText(course.getStartDate());
+            eDate.setText(course.getEndDate());
+        }
 
 
     }//end onCreate
@@ -58,6 +80,15 @@ public class CreateCourse extends AppCompatActivity {
 
 
     }
+
+    public void edit(View v){
+
+    }
+
+    public void delete(View v){
+
+    }
+
     public void cancel(View v){
         startActivity(CoursePage.getIntent(getApplicationContext()));//change to login
     }

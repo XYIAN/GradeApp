@@ -97,6 +97,10 @@ public class AssignmentDashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i("DOESITWORK", "CourseId: " + courseId);
+                Intent intent = CreateCourse.getIntent(getApplicationContext());
+                intent.putExtra("COURSEID", courseId);
+                intent.putExtra("EDITMODE", 1);
+                startActivity(intent);
             }
         });
     }
