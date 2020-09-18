@@ -144,7 +144,7 @@
         app:layout_constraintVertical_bias="0.324" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addAssignmentButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:onClick="createAssignment"
@@ -195,5 +195,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.545" />
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="68dp"
+        android:onClick="delete"
+        android:text="@string/delete_assignment_label"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.647" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
