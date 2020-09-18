@@ -7,7 +7,7 @@
     tools:context=".View.CreateCourse">
 
     <EditText
-        android:id="@+id/courseID"
+        android:id="@+id/courseInstructor"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginEnd="36dp"
@@ -100,7 +100,7 @@
         app:layout_constraintVertical_bias="0.098" />
 
     <EditText
-        android:id="@+id/courseGradeType"
+        android:id="@+id/courseEndD"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginEnd="40dp"

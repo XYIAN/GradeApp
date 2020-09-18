@@ -19,6 +19,8 @@ import com.kxdilbeck.gradeapp.Model.Course;
 import com.kxdilbeck.gradeapp.Model.CourseAdapt;
 import com.kxdilbeck.gradeapp.Model.Grade;
 import com.kxdilbeck.gradeapp.Model.GradeCategory;
+import com.kxdilbeck.gradeapp.View.CreateAccountActivity;
+import com.kxdilbeck.gradeapp.View.CreateCourse;
 import com.kxdilbeck.gradeapp.View.LoginActivity;
 
 import java.util.ArrayList;
@@ -39,11 +41,11 @@ public class CoursePage extends AppCompatActivity {
         GradeController gradeController = new GradeController(getApplicationContext());
         RecyclerView recyclerView = findViewById(R.id.courseRecycler);
         List<String[]> mGrades = new ArrayList<>();
-        for(int i = 0 ; i < cList.size(); i++){
+        for (int i = 0; i < cList.size(); i++) {
             mGrades.add(gradeController.getCourseGrade(uId, cList.get(i).getCourseId()));
         }
         RecyclerView.LayoutManager rLayoutManager = new LinearLayoutManager(this);
-        RecyclerView.Adapter adapter= new CourseAdapt(cList, mGrades, new View.OnClickListener() {
+        RecyclerView.Adapter adapter = new CourseAdapt(cList, mGrades, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -52,22 +54,18 @@ public class CoursePage extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(rLayoutManager);
 
-        //add course button
-        Button addCourse = findViewById(R.id.addCourseButton);
-        addCourse.setOnClickListener((View.OnClickListener) this);
-        //return to login button
-        Button Logout = findViewById(R.id.back_login);
-        Logout.setOnClickListener((View.OnClickListener) this);
-    }
 
-//    @Override
-//    public void onClick(View view)
-//    {
-//        switch (view.getId()) {
-//            case R.id.addCourseButton:
-//        }
-//    }
-}//END COURSE PAGE
+
+    }//end on create
+
+    public void course(View v){
+        startActivity(CreateCourse.getIntent(getApplicationContext()));//change to createCourse
+
+    }
+    public void logout(View v){
+        getSharedPreferences(LoginActivity.CREDENTIALS, MODE_PRIVATE).edit().clear().apply();
+        startActivity(LoginActivity.getIntent(getApplicationContext()));//change to login
+    }
 
     public static Intent getIntent(Context context){
 
@@ -85,4 +83,4 @@ public class CoursePage extends AppCompatActivity {
 
 
 
-}
+}//end course page
