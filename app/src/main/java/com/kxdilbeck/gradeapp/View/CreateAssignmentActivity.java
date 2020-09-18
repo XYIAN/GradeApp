@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.kxdilbeck.gradeapp.Controller.AssignmentController;
 import com.kxdilbeck.gradeapp.Controller.GradeController;
+import com.kxdilbeck.gradeapp.Model.Assignment;
+import com.kxdilbeck.gradeapp.Model.GradeCategory;
 import com.kxdilbeck.gradeapp.R;
 
 /**
@@ -62,6 +64,7 @@ public class CreateAssignmentActivity extends AppCompatActivity {
         if(editMode == 1){
             mDeleteButton.setVisibility(View.VISIBLE);
             mCreateEditButton.setText("Edit");
+            printFieldsToScreen(assignmentId);
         }else{
             mDeleteButton.setVisibility(View.INVISIBLE);
             mCreateEditButton.setText("Create");
@@ -91,6 +94,25 @@ public class CreateAssignmentActivity extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * Appends the fields to there corresponding edit texts
+     * @param assignmentId
+     */
+    private void printFieldsToScreen(int assignmentId){
+        Assignment assignment = mAssignmentController.getAssignment(assignmentId);
+        GradeCategory gradeCategory  = mAssignmentController.getAssignmentCategory(assignmentId);
+
+        mScoreEditText.setText(assignment.getEarnedScore() + "");
+        mMaxScoreEditText.setText(assignment.getMaxScore() + "");
+        mAssignedDateEditText.setText(assignment.getAssignedDate());
+        mDueDateEditText.setText(assignment.getDueDate());
+        mCategoryEditText.setText(gradeCategory.getTitle());
+        mWeightEditText.setText(gradeCategory.getWeight() + "");
+        mDetailsEditText = findViewById(R.id.detailsEditText);
+
+    }
+
 
     /**
      * Returns intent for this activity so another app can switch to it

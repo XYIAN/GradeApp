@@ -217,4 +217,17 @@ public class AssignmentController {
     public Integer getGradeCategoryIdByTitle(int userId, String title, int courseId) {
         return mGradeCategoryDAO.getGradeCategoryIdByTitle(userId, title, courseId);
     }
+
+    /**
+     * Gets a assignment given a specific assignment id
+     * @param assignmentId
+     */
+    public Assignment getAssignment(int assignmentId){
+        return mAssignmentDAO.getAssignment(assignmentId);
+    }
+
+    public GradeCategory getAssignmentCategory(int assignmentId){
+        return mAssignmentDAO.getAssignmentGradeCategory(assignmentId);
+    }
+
 }

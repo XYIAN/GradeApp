@@ -7,6 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.kxdilbeck.gradeapp.Model.Assignment;
+import com.kxdilbeck.gradeapp.Model.GradeCategory;
 
 import java.util.List;
 
@@ -72,4 +73,13 @@ public interface AssignmentDAO {
             AppDatabase.GRADE_TABLE + " WHERE mCourseId = :courseId AND mStudentId = :userId" +
             " GROUP BY Grade.mGradeCategoryId")
     List<Double> getSumOfMaxPointsByCourse(int courseId, int userId);
+
+    /**
+     * Gets a specific assignment's grade category
+     * @param assignmentId
+     * @return
+     */
+    @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE + " NATURAL JOIN " + AppDatabase.GRADE_TABLE +
+            " NATURAL JOIN " + AppDatabase.GRADE_CATEGORY_TABLE + " WHERE mAssignmentId = :assignmentId")
+    GradeCategory getAssignmentGradeCategory(int assignmentId);
 }
