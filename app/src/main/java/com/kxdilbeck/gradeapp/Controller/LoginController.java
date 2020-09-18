@@ -24,12 +24,14 @@ public class LoginController {
         mUserDAO = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DBNAME)
                 .allowMainThreadQueries()
                 .build().getUserDAO();
+    }
 
-        //creates user in db if there is not one.  @TODO create separate class for pre population of data
-        if(!context.getDatabasePath(AppDatabase.DBNAME).exists()){
-            User user = new User("admin", "password", "first", "last", 1);
-            mUserDAO.insert(user);
-        }
+    /**
+     * Alternative constructor for LoginController (can be used for test/debugging)
+     * @param db
+     */
+    public LoginController(AppDatabase db){
+        mUserDAO = db.getUserDAO();
     }
 
     /**
@@ -49,7 +51,7 @@ public class LoginController {
      * @return int value of userId
      */
     public int getUserId(){
-        return currentUser.getUserId();
+        return currentUser != null ? currentUser.getUserId() : -1;
     }
 
 }
