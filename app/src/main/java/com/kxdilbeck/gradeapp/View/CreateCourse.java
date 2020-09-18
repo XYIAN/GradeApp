@@ -30,11 +30,13 @@ public class CreateCourse extends AppCompatActivity {
     private EditText sDate;
     private EditText eDate;
     private Button deleteCourse;
+    private Button createCourse;
     private TextView textView;
     private CourseDAO courseDAO;
     private EnrollmentDAO eDAO;
     private int uId;
     private int courseId;
+    private int mode;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +51,15 @@ public class CreateCourse extends AppCompatActivity {
         eDate = findViewById(R.id.courseEndD);
         deleteCourse = findViewById(R.id.deleteCourse);
         textView = findViewById(R.id.courseTitle);
+        createCourse = findViewById(R.id.create_course_button);
 
-        int mode = getIntent().getIntExtra("EDITMODE", -1);
+        mode = getIntent().getIntExtra("EDITMODE", -1);
 
         if(mode == 1){
             courseId = getIntent().getIntExtra("COURSEID", -1);
             Course course = courseDAO.getCourse(courseId);
 
+            createCourse.setText("Edit");
             deleteCourse.setVisibility(View.VISIBLE);
             textView.setText(course.getTitle());
             mCourseName.setText(course.getTitle());
@@ -68,20 +72,23 @@ public class CreateCourse extends AppCompatActivity {
     }//end onCreate
 
     public void  create(View v){
-        if(!mCourseName.equals("") && !mInstructor.equals("") && !sDate.equals("") && !eDate.equals("")) {
-            Course c = new Course(mInstructor.getText().toString(),
-                    mCourseName.getText().toString()," ",
-                    sDate.getText().toString(), eDate.getText().toString() );
-            int courseID = courseDAO.insert(c).get(0).intValue();
-            Enrollment e = new Enrollment(uId,courseID,"sometime" );
-            eDAO.insert(e);
-            startActivity(CoursePage.getIntent(getApplicationContext()));
+        if(mode == 1){
+            edit();
+        }else{
+            if(!mCourseName.equals("") && !mInstructor.equals("") && !sDate.equals("") && !eDate.equals("")) {
+                Course c = new Course(mInstructor.getText().toString(),
+                        mCourseName.getText().toString()," ",
+                        sDate.getText().toString(), eDate.getText().toString() );
+                int courseID = courseDAO.insert(c).get(0).intValue();
+                Enrollment e = new Enrollment(uId,courseID,"sometime" );
+                eDAO.insert(e);
+                startActivity(CoursePage.getIntent(getApplicationContext()));
+            }
         }
-
 
     }
 
-    public void edit(View v){
+    public void edit(){
         if(!mCourseName.equals("") && !mInstructor.equals("") && !sDate.equals("") && !eDate.equals("")){
             Course c = courseDAO.getCourse(courseId);
             c.setTitle(mCourseName.getText().toString());
