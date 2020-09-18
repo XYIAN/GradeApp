@@ -59,8 +59,7 @@ public class CreateCourse extends AppCompatActivity {
 
     }
     public void cancel(View v){
-        getSharedPreferences(LoginActivity.CREDENTIALS, MODE_PRIVATE).edit().clear().commit();
-        startActivity(LoginActivity.getIntent(getApplicationContext()));//change to login
+        startActivity(CoursePage.getIntent(getApplicationContext()));//change to login
     }
 
     public static Intent getIntent(Context context){

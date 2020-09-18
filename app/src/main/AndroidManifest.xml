@@ -21,6 +21,7 @@
         <activity android:name=".CoursePage"></activity>
         <activity android:name=".View.AssignmentDashboardActivity"></activity>
         <activity android:name=".View.CreateAssignmentActivity"></activity>
+        <activity android:name=".View.CreateCourse"></activity>
     </application>
 
 </manifest>

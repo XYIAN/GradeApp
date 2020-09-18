@@ -19,6 +19,7 @@ import com.kxdilbeck.gradeapp.Model.Course;
 import com.kxdilbeck.gradeapp.Model.CourseAdapt;
 import com.kxdilbeck.gradeapp.Model.Grade;
 import com.kxdilbeck.gradeapp.Model.GradeCategory;
+import com.kxdilbeck.gradeapp.View.AssignmentDashboardActivity;
 import com.kxdilbeck.gradeapp.View.CreateAccountActivity;
 import com.kxdilbeck.gradeapp.View.CreateCourse;
 import com.kxdilbeck.gradeapp.View.LoginActivity;
@@ -48,7 +49,13 @@ public class CoursePage extends AppCompatActivity {
         RecyclerView.Adapter adapter = new CourseAdapt(cList, mGrades, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Button btn = v.findViewById(R.id.courseRecyclerButton);
+                Course course = (Course)btn.getTag();
 
+                Intent intent = AssignmentDashboardActivity.getIntent(getApplicationContext());
+                intent.putExtra("COURSEID", course.getCourseId());
+
+                startActivity(intent);
             }
         });
         recyclerView.setAdapter(adapter);
