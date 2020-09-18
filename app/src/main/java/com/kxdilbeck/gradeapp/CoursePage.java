@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.kxdilbeck.gradeapp.Controller.CourseController;
@@ -51,7 +52,22 @@ public class CoursePage extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(rLayoutManager);
 
+        //add course button
+        Button addCourse = findViewById(R.id.addCourseButton);
+        addCourse.setOnClickListener((View.OnClickListener) this);
+        //return to login button
+        Button Logout = findViewById(R.id.back_login);
+        Logout.setOnClickListener((View.OnClickListener) this);
     }
+
+//    @Override
+//    public void onClick(View view)
+//    {
+//        switch (view.getId()) {
+//            case R.id.addCourseButton:
+//        }
+//    }
+}//END COURSE PAGE
 
     public static Intent getIntent(Context context){
 
@@ -62,6 +78,7 @@ public class CoursePage extends AppCompatActivity {
         RecyclerView courseView = (RecyclerView) findViewById(R.id.courseRecycler);
         return null;
     }
+
 
 
 
