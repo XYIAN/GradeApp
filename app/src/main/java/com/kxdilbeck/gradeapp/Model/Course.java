@@ -7,6 +7,9 @@ import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 
 import java.util.Objects;
 
+/**
+ * This class represents a course row in the course table.
+ */
 @Entity(tableName = AppDatabase.COURSE_TABLE)
 public class Course {
     @PrimaryKey(autoGenerate = true)

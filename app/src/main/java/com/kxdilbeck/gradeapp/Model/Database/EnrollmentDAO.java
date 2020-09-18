@@ -10,6 +10,9 @@ import com.kxdilbeck.gradeapp.Model.Enrollment;
 
 import java.util.List;
 
+/**
+ * Interface for the enrollment table
+ */
 @Dao
 public interface EnrollmentDAO {
     @Insert

@@ -10,6 +10,9 @@ import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 
 import java.util.Objects;
 
+/**
+ * This class represents a grade row in the grade table.
+ */
 @Entity(tableName = AppDatabase.GRADE_TABLE,
         foreignKeys = {
             @ForeignKey(entity = User.class, parentColumns = "mUserId",

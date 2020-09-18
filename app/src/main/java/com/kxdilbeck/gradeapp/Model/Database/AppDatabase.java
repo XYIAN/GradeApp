@@ -13,6 +13,9 @@ import com.kxdilbeck.gradeapp.Model.Grade;
 import com.kxdilbeck.gradeapp.Model.GradeCategory;
 import com.kxdilbeck.gradeapp.Model.User;
 
+/**
+ * Database class
+ */
 @Database(entities = {User.class, Assignment.class, Course.class, Enrollment.class,
         Grade.class, GradeCategory.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
@@ -32,6 +35,11 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract GradeCategoryDAO getGradeCategoryDAO();
     public abstract GradeDAO getGradeDAO();
 
+    /**
+     * Returns the instance of the db
+     * @param context
+     * @return
+     */
     public static final AppDatabase getDb(Context context){
         if(db == null){
             db = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DBNAME).allowMainThreadQueries().build();

@@ -9,6 +9,9 @@ import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 
 import java.util.Objects;
 
+/**
+ * This class represent an Assignment row in the Assignment table of the db.
+ */
 @Entity(tableName = AppDatabase.ASSIGNMENT_TABLE,
         foreignKeys = {
             @ForeignKey(entity = Course.class, parentColumns = "mCourseId",

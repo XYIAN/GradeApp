@@ -7,6 +7,9 @@ import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 
 import java.util.Objects;
 
+/**
+ * This class represents a row in the grade category table
+ */
 @Entity(tableName = AppDatabase.GRADE_CATEGORY_TABLE)
 public class GradeCategory {
     @PrimaryKey(autoGenerate = true)

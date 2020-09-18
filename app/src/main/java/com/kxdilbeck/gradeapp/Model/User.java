@@ -7,8 +7,10 @@ import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 
 import java.util.Objects;
 
-//@TODO annotate
 
+/**
+ * This class represents a row in the user table.
+ */
 @Entity(tableName = AppDatabase.USER_TABLE)
 public class User {
     @PrimaryKey(autoGenerate = true)

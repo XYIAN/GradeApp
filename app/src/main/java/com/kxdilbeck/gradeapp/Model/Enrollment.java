@@ -9,6 +9,9 @@ import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 
 import java.util.Objects;
 
+/**
+ * This class represents an enrollment row in the enrollment table.
+ */
 @Entity(tableName = AppDatabase.ENROLLMENT_TABLE,
         foreignKeys = {
             @ForeignKey(entity = User.class, parentColumns = "mUserId",
