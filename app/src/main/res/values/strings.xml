@@ -22,4 +22,7 @@
     <string name="cancel">cancel</string>
     <string name="recyclerButton">Button</string>
 
+    <string name="add_course_button">Add Course</string>
+    <string name="logout">Logout</string>
+
 </resources>
