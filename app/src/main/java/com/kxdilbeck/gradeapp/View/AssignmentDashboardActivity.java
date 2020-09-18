@@ -28,6 +28,9 @@ import com.kxdilbeck.gradeapp.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * View for all the assignments in a specific course.
+ */
 public class AssignmentDashboardActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -68,7 +71,6 @@ public class AssignmentDashboardActivity extends AppCompatActivity {
         mCourseInfoTextView.setText(course.getInstructor());
 
         List<String[]> mData = mAssignmentController.getDataForRecyclerView(courseId, userId);
-
         mAdapter = new AssignmentAdapter(mData, getApplicationContext(), new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -81,6 +83,9 @@ public class AssignmentDashboardActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    /**
+     * clears the recylcerView when app switches back to this activity to prevent duplicate items
+     */
     @Override
     public void onRestart(){
         super.onRestart();
@@ -88,17 +93,30 @@ public class AssignmentDashboardActivity extends AppCompatActivity {
         mAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * switches to the addAssignment activity
+     * @param v
+     */
     public void addAssignment(View v){
         Intent intent = CreateAssignmentActivity.getIntent(getApplicationContext());
         intent.putExtra("COURSEID", courseId);
         startActivity(intent);
     }
 
+    /**
+     * Goes back to the course dashboard
+     * @param v
+     */
     public void back(View v){
         Intent intent = CoursePage.getIntent(getApplicationContext());
         startActivity(intent);
     }
 
+    /**
+     * Returns an intent to get to this activity
+     * @param context
+     * @return Intent to get to this activity
+     */
     public static Intent getIntent(Context context){
         return new Intent(context.getApplicationContext(), AssignmentDashboardActivity.class);
     }
