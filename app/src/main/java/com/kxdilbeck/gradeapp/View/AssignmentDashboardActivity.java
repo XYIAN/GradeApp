@@ -76,6 +76,12 @@ public class AssignmentDashboardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Button btn = v.findViewById(R.id.selectCourseButton);
                 Integer id = (Integer) btn.getTag();
+
+                Intent intent = CreateAssignmentActivity.getIntent(getApplicationContext());
+                intent.putExtra("COURSEID", courseId);
+                intent.putExtra("EDIT", 1);
+                intent.putExtra("ASSIGNMENTID", id);
+                startActivity(intent);
             }
         });
 

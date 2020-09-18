@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,10 +29,14 @@ public class CreateAssignmentActivity extends AppCompatActivity {
     private EditText mCategoryEditText;
     private EditText mWeightEditText;
     private EditText mDetailsEditText;
+    private Button mCreateEditButton;
+    private Button mDeleteButton;
     private AssignmentController mAssignmentController;
     private int courseId;
     private int userId;
     private int categoryId;
+    private int assignmentId;
+    private int editMode;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +51,21 @@ public class CreateAssignmentActivity extends AppCompatActivity {
         mCategoryEditText = findViewById(R.id.categoryEditText);
         mWeightEditText = findViewById(R.id.weightEditText);
         mDetailsEditText = findViewById(R.id.detailsEditText);
+        mCreateEditButton = findViewById(R.id.addAssignmentButton);
+        mDeleteButton = findViewById(R.id.deleteButton);
 
         userId = getSharedPreferences(LoginActivity.CREDENTIALS, MODE_PRIVATE).getInt("USERID", -1);
         courseId = getIntent().getIntExtra("COURSEID", -1);
+        assignmentId =  getIntent().getIntExtra("ASSIGNMENTID", -1);
+        editMode = getIntent().getIntExtra("EDIT", -1);
+
+        if(editMode == 1){
+            mDeleteButton.setVisibility(View.VISIBLE);
+            mCreateEditButton.setText("Edit");
+        }else{
+            mDeleteButton.setVisibility(View.INVISIBLE);
+            mCreateEditButton.setText("Create");
+        }
 
         mCategoryEditText.addTextChangedListener(new TextWatcher() {
 
@@ -129,14 +146,34 @@ public class CreateAssignmentActivity extends AppCompatActivity {
         }
 
         if(valid){
-            mAssignmentController.addAssignment(courseId, userId, Double.parseDouble(score), Double.parseDouble(maxScore), Double.parseDouble(weight),
-                    dueDate, assignedDate, categoryTitle, details);
+            if(editMode == -1) {
+                mAssignmentController.addAssignment(courseId, userId, Double.parseDouble(score), Double.parseDouble(maxScore), Double.parseDouble(weight),
+                        dueDate, assignedDate, categoryTitle, details);
 
-            Intent intent = AssignmentDashboardActivity.getIntent(getApplicationContext());
-            intent.putExtra("COURSEID", courseId);
-            startActivity(intent);
+                Intent intent = AssignmentDashboardActivity.getIntent(getApplicationContext());
+                intent.putExtra("COURSEID", courseId);
+                startActivity(intent);
+            }else{
+                mAssignmentController.editAssignment(courseId, userId, Double.parseDouble(score), Double.parseDouble(maxScore), Double.parseDouble(weight),
+                        dueDate, assignedDate, categoryTitle, details, assignmentId);
+
+                Intent intent = AssignmentDashboardActivity.getIntent(getApplicationContext());
+                intent.putExtra("COURSEID", courseId);
+                startActivity(intent);
+            }
         }
 
+    }
+
+    /**
+     * Delete an assignment and returns to assignment dashboard
+     * @param v
+     */
+    public void delete(View v){
+        mAssignmentController.delete(assignmentId);
+        Intent intent = AssignmentDashboardActivity.getIntent(getApplicationContext());
+        intent.putExtra("COURSEID", courseId);
+        startActivity(intent);
     }
 
     /**
