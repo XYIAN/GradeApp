@@ -79,7 +79,7 @@ public interface AssignmentDAO {
      * @param assignmentId
      * @return
      */
-    @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE + " NATURAL JOIN " + AppDatabase.GRADE_TABLE +
+    @Query("SELECT Grade_Category.* FROM " + AppDatabase.ASSIGNMENT_TABLE + " NATURAL JOIN " + AppDatabase.GRADE_TABLE +
             " NATURAL JOIN " + AppDatabase.GRADE_CATEGORY_TABLE + " WHERE mAssignmentId = :assignmentId")
     GradeCategory getAssignmentGradeCategory(int assignmentId);
 }

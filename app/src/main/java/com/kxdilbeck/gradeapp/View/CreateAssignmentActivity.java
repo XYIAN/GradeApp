@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,6 +34,7 @@ public class CreateAssignmentActivity extends AppCompatActivity {
     private EditText mDetailsEditText;
     private Button mCreateEditButton;
     private Button mDeleteButton;
+    private TextView mAssignmentTextView;
     private AssignmentController mAssignmentController;
     private int courseId;
     private int userId;
@@ -55,6 +57,7 @@ public class CreateAssignmentActivity extends AppCompatActivity {
         mDetailsEditText = findViewById(R.id.detailsEditText);
         mCreateEditButton = findViewById(R.id.addAssignmentButton);
         mDeleteButton = findViewById(R.id.deleteButton);
+        mAssignmentTextView = findViewById(R.id.assignmentTextView);
 
         userId = getSharedPreferences(LoginActivity.CREDENTIALS, MODE_PRIVATE).getInt("USERID", -1);
         courseId = getIntent().getIntExtra("COURSEID", -1);
@@ -103,6 +106,7 @@ public class CreateAssignmentActivity extends AppCompatActivity {
         Assignment assignment = mAssignmentController.getAssignment(assignmentId);
         GradeCategory gradeCategory  = mAssignmentController.getAssignmentCategory(assignmentId);
 
+        mAssignmentTextView.setText("Assignment"+ assignment.getAssignmentId());
         mScoreEditText.setText(assignment.getEarnedScore() + "");
         mMaxScoreEditText.setText(assignment.getMaxScore() + "");
         mAssignedDateEditText.setText(assignment.getAssignedDate());
