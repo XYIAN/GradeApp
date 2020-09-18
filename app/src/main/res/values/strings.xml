@@ -24,7 +24,21 @@
     <string name="Logout">Button</string>
     <string name="LogoutButton">Logout</string>
 
+    <!--activity_create_assignment assets-->
+    <string name="score_label">Score</string>
+    <string name="max_score_label">Max Score:</string>
+    <string name="due_date_label">Due Date:</string>
+    <string name="assigned_date_label">Assigned Date:</string>
+    <string name="details_hint">enter assignment details</string>
+    <string name="create_assignment_label">Create Assignment</string>
+    <string name="category_label">Category</string>
+    <string name="weight_hint">Enter Grade Weight</string>
+    <string name="back_button">Back</string>
+    <string name="add_assignment_button">add assignment</string>
+
     <string name="add_course_button">Add Course</string>
     <string name="logout">Logout</string>
+    <string name="delete_assignment_label">Delete</string>
+    <string name="credentials_requirements">Username and password must contain at least 1 lower case, uppercase, and number character and be at least 7 characters long.</string>
 
 </resources>

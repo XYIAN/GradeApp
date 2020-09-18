@@ -11,6 +11,9 @@ import com.kxdilbeck.gradeapp.Model.User;
 
 import java.util.List;
 
+/**
+ * Interface for user table
+ */
 @Dao
 public interface UserDAO {
     @Insert

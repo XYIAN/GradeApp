@@ -10,6 +10,9 @@ import com.kxdilbeck.gradeapp.Model.Course;
 
 import java.util.List;
 
+/**
+ * Interface for the course table.
+ */
 @Dao
 public interface CourseDAO {
     @Insert
@@ -21,12 +24,26 @@ public interface CourseDAO {
     @Delete
     void delete(Course course);
 
+    /**
+     * Gets a course by id.
+     * @param courseId
+     * @return Course
+     */
     @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE mCourseId = :courseId")
     Course getCourse(int courseId);
 
+    /**
+     * Gets all courses.
+     * @return List<Course>
+     */
     @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE)
     List<Course> getAllCourses();
 
+    /**
+     * Gets all courses that a user is enrolled in.
+     * @param studentId
+     * @return
+     */
     @Query("SELECT Course.* FROM " + AppDatabase.COURSE_TABLE + " NATURAL JOIN " + AppDatabase.ENROLLMENT_TABLE + " WHERE Enrollment.mStudentId = :studentId")
     List<Course> getAllEnrolledCourses(int studentId);
 }

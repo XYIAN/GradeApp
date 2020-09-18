@@ -65,6 +65,8 @@ public class CourseController {
         return mcourseDAO.getAllEnrolledCourses(userId);
     }
 
-
+    public Course getCourse(int courseId){
+        return mcourseDAO.getCourse(courseId);
+    }
 
 }
