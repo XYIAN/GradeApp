@@ -41,7 +41,7 @@ public class CourseAdapt extends RecyclerView.Adapter<CourseAdapt.CourseViewHold
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mCourses.size();
     }
 
     public class CourseViewHolder extends RecyclerView.ViewHolder {
