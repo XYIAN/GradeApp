@@ -30,7 +30,7 @@ public interface GradeDAO {
             " GROUP BY Grade.mGradeCategoryId")
     List<Double> getAllWeightsForCourse(int courseId, int userId);
 
-    @Query("SELECT mGradeCategoryId FROM " + AppDatabase.GRADE_TABLE + " NATURAL JOIN " +
+    @Query("SELECT DISTINCT mGradeCategoryId FROM " + AppDatabase.GRADE_TABLE + " NATURAL JOIN " +
             AppDatabase.ASSIGNMENT_TABLE + " WHERE mCourseId = :courseId AND mStudentId = :userId ")
     List<Integer> getGradeCategoriesForCourse(int courseId, int userId);
 }
