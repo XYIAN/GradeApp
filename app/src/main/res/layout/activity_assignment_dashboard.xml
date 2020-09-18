@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.AssignmentDashboardActivity">
+
+
+    <TextView
+        android:id="@+id/courseTitle"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/courseInstructor"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/assignmentRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="120dp"
+        android:background="@color/cardview_dark_background"
+        android:maxHeight="570dp"
+        android:minHeight="570dp"
+        android:padding="5dp"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/assignment_item" />
+
+    <Button
+        android:id="@+id/addAssignmentButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginTop="-100dp"
+        android:onClick="addAssignment"
+        android:text="@string/add_assignment_button" />
+
+    <Button
+        android:id="@+id/back_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:onClick="back"
+        android:text="@string/back_button" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
