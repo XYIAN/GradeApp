@@ -27,6 +27,9 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+/**
+ * Tests the GradeController.
+ */
 public class GradeControllerTest {
     private AppDatabase db;
     private GradeController gradeController;
@@ -63,6 +66,9 @@ public class GradeControllerTest {
         gradeDAO = null;
     }
 
+    /**
+     * Tests that getCourseGrades is grading courses correctly.
+     */
     @Test
     public void getCourseGrades() {
         List<User> users = userDAO.getAllUsers();
@@ -80,6 +86,9 @@ public class GradeControllerTest {
         assertEquals(" ", resultant3[1]);
     }
 
+    /**
+     * Tests that the right categoires are being given.
+     */
     @Test
     public void getCourseGradeCategories() {
         List<User> users = userDAO.getAllUsers();
@@ -89,6 +98,9 @@ public class GradeControllerTest {
         assertEquals(gradeDAO.getGradeCategoriesForCourse(courses.get(0).getCourseId() , users.get(0).getUserId()), categories);
     }
 
+    /**
+     * Tests that the right grades are being given for the categories.
+     */
     @Test
     public void getGradeByCategory() {
         List<User> users = userDAO.getAllUsers();
@@ -101,6 +113,9 @@ public class GradeControllerTest {
         assertEquals(83.334, Double.parseDouble(grade[1]), 0.01);
     }
 
+    /**
+     * Tests that the right grades are being given for an assignment
+     */
     @Test
     public void getAssignmentGrade() {
         List<Assignment> assignments = assignmentDAO.getAllAssignments();
@@ -114,6 +129,9 @@ public class GradeControllerTest {
         assertEquals(50.000, Double.parseDouble(two[1]), 0.01);
     }
 
+    /**
+     * Tests that the right assignments are being given for a category.
+     */
     @Test
     public void getAssignmentsByCategory() {
         List<User> users = userDAO.getAllUsers();

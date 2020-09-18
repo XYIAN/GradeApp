@@ -28,6 +28,9 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+/**
+ * Tests whether the AssignmentController is working correctly
+ */
 public class AssignmentControllerTest {
     private AppDatabase db;
     private AssignmentController assignmentController;
@@ -65,6 +68,9 @@ public class AssignmentControllerTest {
         gradeDAO = null;
     }
 
+    /**
+     * Tests that the right category title is being gotten.
+     */
     @Test
     public void getCategoryTitle() {
         User user =  userDAO.getAllUsers().get(0);
@@ -75,30 +81,45 @@ public class AssignmentControllerTest {
         assertEquals("Quiz", assignmentController.getCategoryTitle(categoryId.get(1).intValue()));
     }
 
+    /**
+     * Tests that a valid score is being given
+     */
     @Test
     public void checkScore() {
         assertTrue(assignmentController.checkScore("5"));
         assertFalse(assignmentController.checkScore(""));
     }
 
+    /**
+     * Tests that a valid maxScore is being given
+     */
     @Test
     public void checkMaxScore() {
         assertTrue(assignmentController.checkMaxScore("5"));
         assertFalse(assignmentController.checkMaxScore(""));
     }
 
+    /**
+     * Checks that something is being give for a date
+     */
     @Test
     public void checkDate() {
         assertTrue(assignmentController.checkDate("08/08/08"));
         assertFalse(assignmentController.checkScore(""));
     }
 
+    /**
+     * Tests whether valid categories are being give
+     */
     @Test
     public void checkCategory() {
         assertTrue(assignmentController.checkCategory("Test"));
         assertFalse(assignmentController.checkScore(""));
     }
 
+    /**
+     * Tests whether valid weights are being given
+     */
     @Test
     public void checkWeight() {
         assertTrue(assignmentController.checkWeight("5"));
