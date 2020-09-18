@@ -4,8 +4,10 @@ import android.content.Context;
 import android.util.Log;
 
 import com.kxdilbeck.gradeapp.Model.Assignment;
+import com.kxdilbeck.gradeapp.Model.Course;
 import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 import com.kxdilbeck.gradeapp.Model.Database.AssignmentDAO;
+import com.kxdilbeck.gradeapp.Model.Database.CourseDAO;
 import com.kxdilbeck.gradeapp.Model.Database.GradeCategoryDAO;
 import com.kxdilbeck.gradeapp.Model.Database.GradeDAO;
 import com.kxdilbeck.gradeapp.Model.Grade;
@@ -22,6 +24,7 @@ public class AssignmentController {
     private AssignmentDAO mAssignmentDAO;
     private GradeCategoryDAO mGradeCategoryDAO;
     private GradeController mGradeController;
+    private CourseDAO mCourseDAO;
     private GradeDAO mGradeDAO;
 
     /**
@@ -32,6 +35,7 @@ public class AssignmentController {
         mAssignmentDAO = AppDatabase.getDb(context.getApplicationContext()).getAssignmentDAO();
         mGradeCategoryDAO = AppDatabase.getDb(context.getApplicationContext()).getGradeCategoryDAO();
         mGradeDAO = AppDatabase.getDb(context.getApplicationContext()).getGradeDAO();
+        mCourseDAO = AppDatabase.getDb(context.getApplicationContext()).getCourseDAO();
         mGradeController = new GradeController(context);
     }
 
@@ -186,7 +190,6 @@ public class AssignmentController {
 
             // Gets all the assignments for a specific category
             List<Assignment> assignments = mGradeController.getAssignmentsByCategory(courseId, userId, categoryIds.get(i));
-            Log.i("DOESITWORK", "assignments: " + assignments.size());
             for(int j = 0; j < assignments.size(); j++){
                 String[] grade = mGradeController.getAssignmentGrade(assignments.get(j));
                 grade[0] = "\t"+ categoryTitle + assignments.get(j).getAssignmentId() + " " + grade[0] + ": " + String.format("%.3f", Double.parseDouble(grade[1]));
@@ -230,4 +233,8 @@ public class AssignmentController {
         return mAssignmentDAO.getAssignmentGradeCategory(assignmentId);
     }
 
+    public Course getCourseById(int courseId){
+        return mCourseDAO.getCourse(courseId);
+    }
+    
 }

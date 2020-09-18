@@ -92,6 +92,13 @@ public class AssignmentDashboardActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+        mCourseTitleTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("DOESITWORK", "CourseId: " + courseId);
+            }
+        });
     }
 
     /**
