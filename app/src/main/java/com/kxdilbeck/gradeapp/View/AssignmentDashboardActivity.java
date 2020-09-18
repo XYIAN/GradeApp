@@ -77,6 +77,11 @@ public class AssignmentDashboardActivity extends AppCompatActivity {
                 Button btn = v.findViewById(R.id.selectCourseButton);
                 Integer id = (Integer) btn.getTag();
 
+                // assignmentId 1 indicates a gradeCategory not an assignment
+                if(id == -1){
+                    return;
+                }
+
                 Intent intent = CreateAssignmentActivity.getIntent(getApplicationContext());
                 intent.putExtra("COURSEID", courseId);
                 intent.putExtra("EDIT", 1);
