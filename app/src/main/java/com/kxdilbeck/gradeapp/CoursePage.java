@@ -5,6 +5,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -45,6 +47,10 @@ public class CoursePage extends AppCompatActivity {
 
             }
         });
+    }
+
+    public static Intent getIntent(Context context){
+        return new Intent(context, CoursePage.class);
     }
 
     Prepopulate prepopulate(RecyclerView courses) {

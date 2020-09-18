@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.kxdilbeck.gradeapp.Controller.LoginController;
+import com.kxdilbeck.gradeapp.CoursePage;
 import com.kxdilbeck.gradeapp.Model.Database.AppDatabase;
 import com.kxdilbeck.gradeapp.Model.Database.UserDAO;
 import com.kxdilbeck.gradeapp.Model.User;
@@ -59,6 +60,8 @@ public class LoginActivity extends AppCompatActivity {
             getApplication().getSharedPreferences(CREDENTIALS, MODE_PRIVATE).edit().putInt("USERID", loginController.getUserId()).commit();
             Toast toast = Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG);
             toast.show();
+
+            startActivity(CoursePage.getIntent(getApplicationContext()));
         }else{
             //@TODO create failed login editText.
             mPasswordEditText.setText("");
