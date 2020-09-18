@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
+import androidx.room.RoomDatabase;
 
 import com.kxdilbeck.gradeapp.Controller.LoginController;
 import com.kxdilbeck.gradeapp.CoursePage;
@@ -37,6 +38,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //creates user in db if there is not one.  @TODO create separate class for pre population of data
+        if(!getApplication().getDatabasePath(AppDatabase.DBNAME).exists()){
+            Prepopulate.prepopulate(Room.databaseBuilder(getApplicationContext(), AppDatabase.class, AppDatabase.DBNAME).allowMainThreadQueries().build());
+        }
 
         loginController = new LoginController(getApplicationContext());
         mUsernameEditText = findViewById(R.id.user);
