@@ -94,7 +94,7 @@ public class AssignmentController {
     /**
      * Checks if there is a weight and that it is less than 100%
      * @param weight
-     * @return
+     * @return boolean
      */
     public boolean checkWeight(String weight){
         return !weight.equals("") ? Double.parseDouble(weight) <= 100.0 : false;
@@ -124,6 +124,39 @@ public class AssignmentController {
         details =  details.equals("") ? "None" : details; // Tells the user there are no details.
 
         mAssignmentDAO.insert(new Assignment(courseId, gradeId, dueDate, assignedDate, score, maxScore, details));
+    }
+
+    /**
+     * Adds an assignment to the AppDatabase, creates a category if there is not already one.
+     * @param courseId
+     * @param userId
+     * @param score
+     * @param maxScore
+     * @param weight
+     * @param dueDate
+     * @param assignedDate
+     * @param title
+     * @param details
+     */
+    //@TODO drastically decrease the amount of arguments needed.
+    public void editAssignment(int courseId, int userId, double score, double maxScore, Double weight, String dueDate, String assignedDate, String title, String details, int assignmentId){
+        Integer categoryId = mGradeCategoryDAO.getGradeCategoryIdByTitle(userId, title, courseId);
+        Integer gradeId = null;
+        Assignment assignmentOld =  mAssignmentDAO.getAssignment(assignmentId);
+
+        if(categoryId == null){
+            categoryId = mGradeCategoryDAO.insert(new GradeCategory(title, weight)).get(0).intValue();
+            gradeId = mGradeDAO.insert(new Grade(score, userId, categoryId)).get(0).intValue();
+        }else{
+            Grade grade = new Grade(score, userId, categoryId);
+            grade.setGradeId(assignmentOld.getGradeId());
+            mGradeDAO.update(grade);
+            gradeId = assignmentOld.getGradeId();
+        }
+
+        Assignment assignmentNew = new Assignment(courseId, gradeId, dueDate, assignedDate, score, maxScore, details);
+        assignmentNew.setAssignmentId(assignmentId);
+        mAssignmentDAO.update(assignmentNew);
     }
 
     /**
@@ -164,6 +197,14 @@ public class AssignmentController {
         }
 
         return allDataForRecyclerView;
+    }
+
+    /**
+     * Removes the assignment with this id from the db.
+     * @param assignmentId
+     */
+    public void delete(int assignmentId){
+        mAssignmentDAO.delete(mAssignmentDAO.getAssignment(assignmentId));
     }
 
     /**
