@@ -1,6 +1,9 @@
 package com.kxdilbeck.gradeapp.Model.Database;
 
+import android.content.Context;
+
 import androidx.room.Database;
+import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.kxdilbeck.gradeapp.Model.Assignment;
@@ -20,6 +23,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static final String GRADE_TABLE = "Grade";
     public static final String GRADE_CATEGORY_TABLE = "Grade_Category";
     public static final String ENROLLMENT_TABLE = "Enrollment";
+    private static AppDatabase db;
 
     public abstract UserDAO getUserDAO();
     public abstract AssignmentDAO getAssignmentDAO();
@@ -27,4 +31,12 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract EnrollmentDAO getEnrollmentDAO();
     public abstract GradeCategoryDAO getGradeCategoryDAO();
     public abstract GradeDAO getGradeDAO();
+
+    public static final AppDatabase getDb(Context context){
+        if(db == null){
+            db = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DBNAME).allowMainThreadQueries().build();
+        }
+
+        return db;
+    }
 }
